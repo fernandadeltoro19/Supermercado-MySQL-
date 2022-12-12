@@ -1,0 +1,1975 @@
+CREATE DATABASE Supermercado;
+
+USE Supermercado;
+
+CREATE TABLE BODEGA
+(
+idBodega int auto_increment,
+numero int not null,
+total int not null,
+estatus bit default 1 not null,
+primary key(idBodega)
+);
+
+
+CREATE TABLE CAJA
+(
+idCaja int auto_increment,
+numero int not null,
+persona varchar (50) not null,
+computadora varchar (50) not null,
+idSucursal int not null,
+estatus bit default 1 not null,
+primary key(idCaja)
+);
+
+
+CREATE TABLE CAPACITACION
+(
+idCapacitacion int auto_increment,
+nombre varchar (50) not null,
+tipo varchar (50) not null,
+numero int not null,
+estatus bit default 1 not null,
+primary key(idCapacitacion)
+);
+
+
+CREATE TABLE CLIENTE
+(
+idCliente int auto_increment,
+nombre varchar (50) not null,
+apellidopaterno varchar (50) not null,
+apellidomaterno varchar (50) not null,
+telefono int not null,
+idMembresia int not null,
+idTarjetaPunto int not null,
+estatus bit default 1 not null,
+primary key(idCliente)
+);
+
+CREATE TABLE COMPRA
+(
+idCompra int auto_increment,
+cantidad int not null,
+fecha date not null,
+idFacturaCliente int not null,
+idProducto int not null,
+estatus bit default 1 not null,
+primary key(idCompra)
+);
+
+
+CREATE TABLE COMPROBANTE
+(
+idComprobante int auto_increment,
+fecha date not null,
+cantidad int not null,
+productos varchar (50) not null,
+estatus bit default 1 not null,
+primary key(idComprobante)
+);
+
+
+CREATE TABLE CONTADOR
+(
+idContador int auto_increment,
+nombre varchar (50) not null,
+apellidopaterno varchar (50) not null,
+apellidomaterno varchar (50) not null,
+calle varchar (50) not null,
+numero int not null,
+ciudad varchar (50) not null,
+telefono int not null,
+estatus bit default 1 not null,
+primary key(idContador)
+);
+
+
+CREATE TABLE CONTRATO
+(
+idContrato int auto_increment,
+numero int not null,
+fecha date not null,
+nombre varchar (50) not null,
+servicios varchar (50) not null,
+estatus bit default 1 not null,
+primary key(idContrato)
+);
+
+
+CREATE TABLE CONVENIO
+(
+idConvenio int auto_increment,
+fecha date not null,
+cantidad int not null,
+estatus bit default 1 not null,
+primary key(idConvenio)
+);
+
+
+CREATE TABLE COTIZACION
+(
+idCotizacion int auto_increment,
+cantidad int not null,
+producto varchar (50) not null,
+estatus bit default 1 not null,
+primary key(idCotizacion)
+);
+
+
+CREATE TABLE CREDITO
+(
+idCredito int auto_increment,
+creditodisponible int not null,
+creditodebe int not null,
+fecha date not null,
+estatus bit default 1 not null,
+primary key(idCredito)
+);
+
+
+CREATE TABLE DELIVERY
+(
+idDelivery int auto_increment,
+cantidad int not null,
+producto varchar (50) not null,
+direccion varchar (50) not null,
+horasalida date not null,
+horallegada date not null,
+idSucursal int not null,
+estatus bit default 1 not null,
+primary key(idDelivery)
+);
+
+
+CREATE TABLE DEPARTAMENTO
+(
+idDepartamento int auto_increment,
+nombre varchar (50) not null,
+categoria varchar (50) not null,
+idSucursal int not null,
+estatus bit default 1 not null,
+primary key(idDepartamento)
+);
+
+
+CREATE TABLE DEVOLUCION
+(
+idDevolucion int auto_increment,
+producto varchar (50) not null,
+cantidad int not null,
+cantidadmonetaria int not null,
+fecha date not null,
+idCliente int not null,
+estatus bit default 1 not null,
+primary key(idDevolucion)
+);
+
+
+CREATE TABLE DEVOLUCIONPROVEEDOR
+(
+idDevolucionproveedor int auto_increment,
+producto varchar (50) not null,
+cantidad int not null,
+cantidadmonetaria int not null,
+fecha date not null,
+idProveedor int not null,
+estatus bit default 1 not null,
+primary key(idDevolucionproveedor)
+);
+
+
+CREATE TABLE EMPLEADO
+(
+idEmpleado int auto_increment,
+nombre varchar (50) not null,
+apellidopaterno varchar (50) not null,
+apellidomaterno varchar (50) not null,
+curp varchar (50) not null,
+telefono int not null,
+calle varchar (50) not null,
+numero int not null,
+colonia varchar (50) not null,
+ciudad varchar (50) not null,
+estatus bit default 1 not null,
+primary key(idEmpleado)
+);
+
+
+CREATE TABLE EMPRESA
+(
+idEmpresa int auto_increment,
+nombre varchar (50) not null,
+telefono int not null,
+calle varchar (50) not null,
+estado varchar (50) not null,
+numero int not null,
+colonia varchar (50) not null,
+ciudad varchar (50) not null,
+estatus bit default 1 not null,
+primary key(idEmpresa)
+);
+
+
+CREATE TABLE ENVIO
+(
+idEnvio int auto_increment,
+nombre varchar (50) not null,
+apellidopaterno varchar (50) not null,
+apellidomaterno varchar (50) not null,
+calle varchar (50) not null,
+estado varchar (50) not null,
+numero int not null,
+colonia varchar (50) not null,
+ciudad varchar (50) not null,
+cantidad int not null,
+categoria varchar (50) not null,
+fecha date not null,
+estatus bit default 1 not null,
+primary key(idEnvio)
+);
+
+
+CREATE TABLE EQUIPOINFORMATICO
+(
+idEquipoinformatico int auto_increment,
+tipo varchar (50) not null,
+cantidad int not null,
+total int not null,
+idSucursal int not null,
+estatus bit default 1 not null,
+primary key(idEquipoinformatico)
+);
+
+
+CREATE TABLE ESTACIONAMIENTO
+(
+idEstacionamiento int auto_increment,
+lugar int not null,
+tipo varchar (50) not null,
+estatus bit default 1 not null,
+primary key(idEstacionamiento)
+);
+
+
+CREATE TABLE FACTURACLIENTE
+(
+idFacturacliente int auto_increment,
+fecha datetime not null,
+remitente varchar (50) not null,
+cantidad int not null,
+idCliente int not null,
+idContador int not null,
+estatus bit default 1 not null,
+primary key(idFacturacliente)
+);
+
+
+CREATE TABLE FACTURAPROVEEDOR
+(
+idFacturaproveedor int auto_increment,
+fecha date not null,
+remitente varchar (50) not null,
+cantidad int not null,
+idContador int not null,
+estatus bit default 1 not null,
+primary key(idFacturaproveedor)
+);
+
+
+CREATE TABLE HORARIOTRABAJADOR
+(
+idHorariotrabajador int auto_increment,
+entrada datetime not null,
+salida date not null,
+idEmpleado int not null,
+estatus bit default 1 not null,
+primary key(idHorariotrabajador)
+);
+
+
+
+CREATE TABLE INVENTARIO
+(
+idInventario int auto_increment,
+nombre varchar (50) not null,
+tipo varchar (50) not null,
+fecha date not null,
+estatus bit default 1 not null,
+primary key(idInventario)
+);
+
+
+CREATE TABLE MANTENIMIENTO
+(
+idMantenimiento int auto_increment,
+persona varchar (50) not null,
+tipo varchar (50) not null,
+fecha date not null,
+idSucursal int not null,
+estatus bit default 1 not null,
+primary key(idMantenimiento)
+);
+
+
+CREATE TABLE MARCA
+(
+idMarca int auto_increment,
+nombre varchar (50) not null,
+ciudad varchar (50) not null,
+estatus bit default 1 not null,
+primary key(idMarca)
+);
+
+
+CREATE TABLE MARKETING
+(
+idMarketing int auto_increment,
+tipo varchar (50) not null,
+lugar varchar (50) not null,
+idSucursal int not null,
+estatus bit default 1 not null,
+primary key(idMarketing)
+);
+
+
+CREATE TABLE MATERIAPRIMA
+(
+idMateriaprima int auto_increment,
+material varchar (50) not null,
+nombre varchar (50) not null,
+cantidad int not null,
+idProducto int not null,
+estatus bit default 1 not null,
+primary key(idMateriaprima)
+);
+
+
+CREATE TABLE MEMBRESIA
+(
+idMembresia int auto_increment,
+nombre varchar (50) not null,
+apellidopaterno varchar (50) not null,
+apellidomaterno varchar (50) not null,
+calle varchar (50) not null,
+colonia varchar (50) not null,
+ciudad varchar (50) not null,
+numero int not null,
+idSucursal int not null,
+estatus bit default 1 not null,
+primary key(idMembresia)
+);
+
+
+CREATE TABLE METODOPAGO
+(
+idMetodopago int auto_increment,
+tipo varchar (50) not null,
+idCliente int not null,
+estatus bit default 1 not null,
+primary key(idMetodopago)
+);
+
+
+CREATE TABLE MOBILIARIO
+(
+idMobiliario int auto_increment,
+nombre varchar (50) not null,
+cantidad int not null,
+categoria varchar (50) not null,
+idSucursal int not null,
+estatus bit default 1 not null,
+primary key(idMobiliario)
+);
+
+
+CREATE TABLE NOMINA
+(
+idNomina int auto_increment,
+fecha date not null,
+persona varchar (50) not null,
+cantidad varchar (50) not null,
+idContador int not null,
+estatus bit default 1 not null,
+primary key(idNomina)
+);
+
+
+CREATE TABLE OFERTA
+(
+idOferta int auto_increment,
+producto varchar (50) not null,
+precio varchar (50) not null,
+precioanterior varchar (50) not null,
+estatus bit default 1 not null,
+primary key(idOferta)
+);
+
+
+CREATE TABLE PAGOSERVICIO
+(
+idPagoservicio int auto_increment,
+cantidad int not null,
+servicio varchar (50) not null,
+fecha date not null,
+idSucursal int not null,
+estatus bit default 1 not null,
+primary key(idPagoservicio)
+);
+
+
+CREATE TABLE PAQUETE 
+(
+idPaquete int auto_increment,
+numero int not null,
+peso varchar (50) not null,
+remitente varchar (50) not null,
+destinatario varchar (50) not null,
+idEnvio int not null,
+idPedidoLinea int not null,
+estatus bit default 1 not null,
+primary key(idPaquete)
+);
+
+
+CREATE TABLE PASILLO
+(
+idPasillo int auto_increment,
+cantidad int not null,
+numero int not null,
+tipo varchar (50) not null,
+idSucursal int not null,
+estatus bit default 1 not null,
+primary key(idPasillo)
+);
+
+
+CREATE TABLE PEDIDOLINEA
+(
+idPedidoLinea int auto_increment,
+fecha date not null,
+cantidad varchar (50) not null,
+producto varchar (50) not null,
+total int not null,
+estatus bit default 1 not null,
+primary key(idPedidoLinea)
+);
+
+
+CREATE TABLE PRESTACION
+(
+idPrestacion int auto_increment,
+tipo varchar (50) not null,
+estatus bit default 1 not null,
+primary key(idPrestacion)
+);
+
+
+CREATE TABLE PRODUCCION
+(
+idProduccion int auto_increment,
+fecha date not null,
+total int not null,
+idMarca int not null,
+estatus bit default 1 not null,
+primary key(idProduccion)
+);
+
+
+CREATE TABLE PRODUCTO
+(
+idProducto int auto_increment,
+nombre varchar (50) not null,
+cantidad int not null,
+categoria varchar (50) not null,
+idBodega int not null,
+idDevolucion int not null,
+idProduccion int not null,
+estatus bit default 1 not null,
+primary key(idProducto)
+);
+
+
+CREATE TABLE PROVEEDOR
+(
+idProveedor int auto_increment,
+nombre varchar (50) not null,
+apellidopaterno varchar (50) not null,
+apellidomaterno varchar (50) not null,
+calle varchar (50) not null,
+numero int not null,
+ciudad varchar (50) not null,
+telefono int not null,
+estatus bit default 1 not null,
+primary key(idProveedor)
+);
+
+
+CREATE TABLE PUESTO
+(
+idPuesto int auto_increment,
+tipopuesto varchar (50) not null,
+idEmpleado int not null,
+estatus bit default 1 not null,
+primary key(idPuesto)
+);
+
+
+CREATE TABLE QUEJA
+(
+idQueja int auto_increment,
+tipoqueja varchar (50) not null,
+fecha date not null,
+estatus bit default 1 not null,
+primary key(idQueja)
+);
+
+
+CREATE TABLE REPRESENTANTE 
+(
+idRepresentante int auto_increment,
+nombre varchar (50) not null,
+apellidopaterno varchar (50) not null,
+apellidomaterno varchar (50) not null,
+telefono int not null,
+empresa varchar (50) not null,
+estatus bit default 1 not null,
+primary key(idRepresentante)
+);
+
+
+CREATE TABLE RESTAURANTE 
+(
+idRestaurante int auto_increment,
+mesas int not null,
+sillas int not null,
+comida varchar (50) not null,
+estatus bit default 1 not null,
+primary key(idRestaurante)
+);
+
+
+CREATE TABLE SUCURSAL
+(
+idSucursal int auto_increment,
+nombre varchar (50) not null,
+telefono int not null,
+calle varchar (50) not null,
+estado varchar (50) not null,
+numero int not null,
+colonia varchar (50) not null,
+ciudad varchar (50) not null,
+estatus bit default 1 not null,
+primary key(idSucursal)
+);
+
+
+CREATE TABLE TARJETAPUNTO
+(
+idTarjetapunto int auto_increment,
+puntos int not null,
+beneficios varchar (50) not null,
+idSucursal int not null,
+estatus bit default 1 not null,
+primary key(idTarjetapunto)
+);
+
+
+CREATE TABLE TRANSPORTE
+(
+idTransporte int auto_increment,
+marca varchar (50) not null,
+tipo varchar (50) not null,
+estatus bit default 1 not null,
+primary key(idTransporte)
+);
+
+
+CREATE TABLE VENTA 
+(
+idVenta int auto_increment,
+fecha date not null,
+cantidad varchar (50) not null,
+estatus bit default 1 not null,
+primary key(idVenta)
+);
+
+
+CREATE TABLE VIGILANCIA
+(
+idVigilancia int auto_increment,
+caseta int not null,
+total int not null,
+idSucursal int not null,
+estatus bit default 1 not null,
+primary key(idVigilancia)
+);
+
+
+CREATE TABLE BodegaInventario
+(
+	idBodegaInventario int auto_increment,
+	idBodega int NOT NULL,
+	idInventario int not null,
+	fechainventario datetime not null,
+	estatus bit default 1 not null,
+	primary key(idBodegaInventario)
+);
+
+
+CREATE TABLE ClienteCompra
+(
+	idClienteCompra int auto_increment,
+	idCliente int NOT NULL,
+	idCompra int not null,
+	fechacompra datetime not null,
+	estatus bit default 1 not null,
+	primary key(idClienteCompra)
+);
+
+
+CREATE TABLE ClienteCotizacion
+(
+	idClienteCotizacion int auto_increment,
+	idCliente int NOT NULL,
+	idCotizacion int not null,
+	estatus bit default 1 not null,
+	primary key(idClienteCotizacion)
+);
+
+
+CREATE TABLE ClienteCredito
+(
+	idClienteCredito int auto_increment,
+	idCliente int NOT NULL,
+	idCredito int not null,
+	fechacredito date not null,
+	estatus bit default 1 not null,
+	primary key(idClienteCredito)
+);
+
+
+CREATE TABLE ClienteQueja
+(
+	idClienteQueja int auto_increment,
+	idCliente int NOT NULL,
+	idQueja int not null,
+	fechaqueja date not null,
+	estatus bit default 1 not null,
+	primary key(idClienteQueja)
+);
+
+
+CREATE TABLE EmpleadoCapacitacion
+(
+	idEmpleadoCapacitacion int auto_increment,
+	idEmpleado int NOT NULL,
+	idCapacitacion int not null,
+	estatus bit default 1 not null,
+	primary key(idEmpleadoCapacitacion)
+);
+
+
+CREATE TABLE EmpleadoContrato
+(
+	idEmpleadoContrato int auto_increment,
+	idEmpleado int NOT NULL,
+	idContrato int not null,
+	fechacontrato date not null,
+	estatus bit default 1 not null,
+	primary key(idEmpleadoContrato)
+);
+
+
+CREATE TABLE EmpleadoPrestacion
+(
+	idEmpleadoPrestacion int auto_increment,
+	idEmpleado int NOT NULL,
+	idPrestacion int not null,
+	estatus bit default 1 not null,
+	primary key(idEmpleadoPrestacion)
+);
+
+
+CREATE TABLE ProductoEnvio
+(
+	idProductoEnvio int auto_increment,
+	idProducto int NOT NULL,
+	idEnvio int not null,
+	fechaenvio date not null,
+	estatus bit default 1 not null,
+	primary key(idProductoEnvio)
+);
+
+
+CREATE TABLE ProductoOferta
+(
+	idProductoOferta int auto_increment,
+	idProducto int NOT NULL,
+	idOferta int not null,
+	fechaoferta date not null,
+	estatus bit default 1 not null,
+	primary key(idProductoOferta)
+);
+
+
+CREATE TABLE ProductoPedidoLinea
+(
+	idProductoPedidoLinea int auto_increment,
+	idProducto int NOT NULL,
+	idPedidoLinea int not null,
+	fechapedidolinea date not null,
+	estatus bit default 1 not null,
+	primary key(idProductoPedidoLinea)
+);
+
+
+CREATE TABLE ProductoVenta
+(
+	idProductoVenta int auto_increment,
+	idProducto int NOT NULL,
+	idVenta int not null,
+	fechaventa date not null,
+	estatus bit default 1 not null,
+	primary key(idProductoVenta)
+);
+
+
+CREATE TABLE SucursalEmpleado
+(
+	idSucursalEmpleado int auto_increment,
+	idSucursal int NOT NULL,
+	idEmpleado int not null,
+	estatus bit default 1 not null,
+	primary key(idSucursalEmpleado)
+);
+
+
+CREATE TABLE TransportePaquete
+(
+	idTransportePaquete int auto_increment,
+	idTransporte int NOT NULL,
+	idPaquete int not null,
+	estatus bit default 1 not null,
+	primary key(idTransportePaquete)
+);
+
+
+ALTER TABLE Caja ADD FOREIGN KEY (idSucursal) REFERENCES
+Sucursal(idSucursal);
+
+
+ALTER TABLE Cliente ADD FOREIGN KEY (idMembresia) REFERENCES
+Membresia(idMembresia);
+ALTER TABLE Cliente ADD FOREIGN KEY (idTarjetaPunto) REFERENCES
+TarjetaPunto(idTarjetaPunto);
+
+
+ALTER TABLE Compra ADD FOREIGN KEY (idFacturaCliente) REFERENCES
+FacturaCliente(idFacturaCliente);
+ALTER TABLE Compra ADD FOREIGN KEY (idProducto) REFERENCES
+Producto(idProducto);
+
+
+ALTER TABLE Delivery ADD FOREIGN KEY (idSucursal) REFERENCES
+Sucursal(idSucursal);
+
+
+ALTER TABLE Departamento ADD FOREIGN KEY (idSucursal) REFERENCES
+Sucursal(idSucursal);
+
+
+ALTER TABLE Devolucion ADD FOREIGN KEY (idCliente) REFERENCES
+Cliente(idCliente);
+
+ALTER TABLE DevolucionProveedor ADD FOREIGN KEY (idProveedor) REFERENCES
+Proveedor(idProveedor);
+
+
+ALTER TABLE EquipoInformatico ADD FOREIGN KEY (idSucursal) REFERENCES
+Sucursal(idSucursal);
+
+
+ALTER TABLE FacturaCliente ADD FOREIGN KEY (idCliente) REFERENCES
+Cliente(idCliente);
+ALTER TABLE FacturaCliente ADD FOREIGN KEY (idContador) REFERENCES
+Contador(idContador);
+
+
+ALTER TABLE FacturaProveedor ADD FOREIGN KEY (idContador) REFERENCES
+Contador(idContador);
+
+
+ALTER TABLE HorarioTrabajador ADD FOREIGN KEY (idEmpleado) REFERENCES
+Empleado(idEmpleado);
+
+
+ALTER TABLE Mantenimiento ADD FOREIGN KEY (idSucursal) REFERENCES
+Sucursal(idSucursal);
+
+
+ALTER TABLE Marketing ADD FOREIGN KEY (idSucursal) REFERENCES
+Sucursal(idSucursal);
+
+
+ALTER TABLE MateriaPrima ADD FOREIGN KEY (idProducto) REFERENCES
+Producto(idProducto);
+
+
+ALTER TABLE Membresia ADD FOREIGN KEY (idSucursal) REFERENCES
+Sucursal(idSucursal);
+
+
+ALTER TABLE Mobiliario ADD FOREIGN KEY (idSucursal) REFERENCES
+Sucursal(idSucursal);
+
+ALTER TABLE Nomina ADD FOREIGN KEY (idContador) REFERENCES
+Contador(idContador);
+
+ALTER TABLE PagoServicio ADD FOREIGN KEY (idSucursal) REFERENCES
+Sucursal(idSucursal);
+
+ALTER TABLE Paquete ADD FOREIGN KEY (idEnvio) REFERENCES
+Envio(idEnvio);
+ALTER TABLE Paquete ADD FOREIGN KEY (idPedidoLinea) REFERENCES
+PedidoLinea(idPedidoLinea);
+
+ALTER TABLE Pasillo ADD FOREIGN KEY (idSucursal) REFERENCES
+Sucursal(idSucursal);
+
+
+ALTER TABLE Produccion ADD FOREIGN KEY (idMarca) REFERENCES
+Marca(idMarca);
+
+
+ALTER TABLE Producto ADD FOREIGN KEY (idBodega) REFERENCES
+Bodega(idBodega);
+ALTER TABLE Producto ADD FOREIGN KEY (idDevolucion) REFERENCES
+Devolucion(idDevolucion);
+ALTER TABLE Producto ADD FOREIGN KEY (idProduccion) REFERENCES
+Produccion(idProduccion);
+
+
+ALTER TABLE TarjetaPunto ADD FOREIGN KEY (idSucursal) REFERENCES
+Sucursal(idSucursal);
+
+ALTER TABLE Vigilancia ADD FOREIGN KEY (idSucursal) REFERENCES
+Sucursal(idSucursal);
+
+
+
+ALTER TABLE BodegaInventario ADD FOREIGN KEY (idBodega) REFERENCES
+Bodega (idBodega);
+ALTER TABLE BodegaInventario ADD FOREIGN KEY (idInventario) REFERENCES
+Inventario (idInventario);
+
+ALTER TABLE ClienteCompra ADD FOREIGN KEY (idCliente) REFERENCES
+Cliente (idCliente);
+ALTER TABLE ClienteCompra ADD FOREIGN KEY (idCompra) REFERENCES
+Compra (idCompra);
+
+ALTER TABLE ClienteCotizacion ADD FOREIGN KEY (idCliente) REFERENCES
+Cliente (idCliente);
+ALTER TABLE ClienteCotizacion ADD FOREIGN KEY (idCotizacion) REFERENCES
+Cotizacion (idCotizacion);
+
+ALTER TABLE ClienteCredito ADD FOREIGN KEY (idCliente) REFERENCES
+Cliente (idCliente);
+ALTER TABLE ClienteCredito ADD FOREIGN KEY (idCredito) REFERENCES
+Credito (idCredito);
+
+ALTER TABLE ClienteQueja ADD FOREIGN KEY (idCliente) REFERENCES
+Cliente (idCliente);
+ALTER TABLE ClienteQueja ADD FOREIGN KEY (idQueja) REFERENCES
+Queja (idQueja);
+
+ALTER TABLE EmpleadoCapacitacion ADD FOREIGN KEY (idEmpleado) REFERENCES
+Empleado (idEmpleado);
+ALTER TABLE EmpleadoCapacitacion ADD FOREIGN KEY (idCapacitacion) REFERENCES
+Capacitacion (idCapacitacion);
+
+ALTER TABLE EmpleadoContrato ADD FOREIGN KEY (idEmpleado) REFERENCES
+Empleado (idEmpleado);
+ALTER TABLE EmpleadoContrato ADD FOREIGN KEY (idContrato) REFERENCES
+Contrato (idContrato);
+
+ALTER TABLE ProductoEnvio ADD FOREIGN KEY (idProducto) REFERENCES
+Producto (idProducto);
+ALTER TABLE ProductoEnvio ADD FOREIGN KEY (idEnvio) REFERENCES
+Envio (idEnvio);
+
+ALTER TABLE ProductoOferta ADD FOREIGN KEY (idProducto) REFERENCES
+Producto (idProducto);
+ALTER TABLE ProductoOferta ADD FOREIGN KEY (idOferta) REFERENCES
+Oferta (idOferta);
+
+ALTER TABLE ProductoPedidoLinea ADD FOREIGN KEY (idProducto) REFERENCES
+Producto (idProducto);
+ALTER TABLE ProductoPedidoLinea ADD FOREIGN KEY (idPedidoLinea) REFERENCES
+Producto (idProducto);
+
+ALTER TABLE ProductoVenta ADD FOREIGN KEY (idProducto) REFERENCES
+Producto (idProducto);
+ALTER TABLE ProductoVenta ADD FOREIGN KEY (idVenta) REFERENCES
+Venta (idVenta);
+
+ALTER TABLE SucursalEmpleado ADD FOREIGN KEY (idSucursal) REFERENCES
+Sucursal (idSucursal);
+ALTER TABLE SucursalEmpleado ADD FOREIGN KEY (idEmpleado) REFERENCES
+Empleado (idEmpleado);
+
+ALTER TABLE TransportePaquete ADD FOREIGN KEY (idTransporte) REFERENCES
+Transporte (idTransporte);
+ALTER TABLE TransportePaquete ADD FOREIGN KEY (idPaquete) REFERENCES
+Paquete (idPaquete);
+
+
+CREATE INDEX IX_Bodega ON Bodega(idBodega);
+CREATE INDEX IX_Caja ON Caja(idCaja);
+CREATE INDEX IX_Capacitacion ON Capacitacion(idCapacitacion);
+CREATE INDEX IX_Cliente ON Cliente(idCliente);
+CREATE INDEX IX_Compra ON Compra(idCompra);
+CREATE INDEX IX_Comprobante ON Comprobante(idComprobante);
+CREATE INDEX IX_Contador ON Contador(idContador);
+CREATE INDEX IX_Contrato ON Contrato(idContrato);
+CREATE INDEX IX_Convenio ON Convenio(idConvenio);
+CREATE INDEX IX_Cotizacion ON Cotizacion(idCotizacion);
+CREATE INDEX IX_Credito ON Credito(idCredito);
+CREATE INDEX IX_Delivery ON Delivery(idDelivery);
+CREATE INDEX IX_Departamento ON Departamento(idDepartamento);
+CREATE INDEX IX_Devolucion ON Devolucion(idDevolucion);
+CREATE INDEX IX_Devolucionproveedor ON Devolucionproveedor(idDevolucionproveedor);
+CREATE INDEX IX_Empleado ON Empleado(idEmpleado);
+CREATE INDEX IX_Empresa ON Empresa(idEmpresa);
+CREATE INDEX IX_Envio ON Envio(idEnvio);
+CREATE INDEX IX_Equipoinformatico ON Equipoinformatico(idEquipoinformatico);
+CREATE INDEX IX_Facturacliente ON Facturacliente(idFacturaCliente);
+CREATE INDEX IX_Facturaproveedor ON Facturaproveedor(idFacturaproveedor);
+CREATE INDEX IX_Horariotrabajador ON Horariotrabajador (idHorariotrabajador);
+CREATE INDEX IX_Inventario ON Inventario(idInventario);
+CREATE INDEX IX_Mantenimiento ON Mantenimiento(idMantenimiento);
+CREATE INDEX IX_Marca ON Marca(idMarca);
+CREATE INDEX IX_Marketing ON Marketing(idMarketing);
+CREATE INDEX IX_Materiaprima ON Materiaprima(idMateriaprima);
+CREATE INDEX IX_Membresia ON Membresia(idMembresia);
+CREATE INDEX IX_Metodopago ON Metodopago(idMetodopago);
+CREATE INDEX IX_Mobiliario ON Mobiliario(idMobiliario);
+CREATE INDEX IX_Nomina ON Nomina(idNomina);
+CREATE INDEX IX_Oferta ON Oferta(idOferta);
+CREATE INDEX IX_Pagoservicio ON Pagoservicio(idPagoservicio);
+CREATE INDEX IX_Paquete ON Paquete(idPaquete);
+CREATE INDEX IX_Pasillo ON Pasillo(idPasillo);
+CREATE INDEX IX_Pedidolinea ON Pedidolinea(idPedidoLinea);
+CREATE INDEX IX_Prestacion ON Prestacion(idPrestacion);
+CREATE INDEX IX_Produccion ON Produccion(idProduccion);
+CREATE INDEX IX_Producto ON Producto(idProducto);
+CREATE INDEX IX_Proveedor ON Proveedor(idProveedor);
+CREATE INDEX IX_Puesto ON Puesto(idPuesto);
+CREATE INDEX IX_Queja ON Queja(idQueja);
+CREATE INDEX IX_Representante ON Representante(idRepresentante);
+CREATE INDEX IX_Restaurante ON Restaurante(idRestaurante);
+CREATE INDEX IX_Sucursal ON Sucursal(idSucursal);
+CREATE INDEX IX_Tarjetapunto ON Tarjetapunto(idTarjetapunto);
+CREATE INDEX IX_Transporte ON Transporte(idTransporte);
+CREATE INDEX IX_Venta ON Venta(idVenta);
+CREATE INDEX IX_Vigilancia ON Vigilancia(idVigilancia);
+CREATE INDEX IX_BodegaInventario ON BodegaInventario(idBodegaInventario);
+CREATE INDEX IX_ClienteCompra ON ClienteCompra(idClienteCompra);
+CREATE INDEX IX_ClienteCotizacion ON ClienteCotizacion(idClienteCotizacion);
+CREATE INDEX IX_ClienteCredito ON ClienteCredito(idClienteCredito);
+CREATE INDEX IX_ClienteQueja ON ClienteQueja(idClienteQueja);
+CREATE INDEX IX_EmpleadoCapacitacion ON EmpleadoCapacitacion(idEmpleadoCapacitacion);
+CREATE INDEX IX_EmpleadoPrestacion ON EmpleadoPrestacion(idEmpleadoPrestacion);
+CREATE INDEX IX_ProductoEnvio ON ProductoEnvio(idProductoEnvio);
+CREATE INDEX IX_ProductoOferta ON ProductoOferta(idProductoOferta);
+CREATE INDEX IX_ProductoPedidoLinea ON ProductoPedidoLinea(idProductoPedidoLinea);
+CREATE INDEX IX_ProductoVenta ON ProductoVenta(idProductoVenta);
+CREATE INDEX IX_SucursalEmpleado ON SucursalEmpleado(idSucursalEmpleado);
+CREATE INDEX IX_TransportePaquete ON TransportePaquete(idTransportePaquete);
+
+INSERT INTO Bodega(numero, total) values (1, 1);
+INSERT INTO Bodega(numero, total) values (2, 2);
+INSERT INTO Bodega(numero, total) values (3, 3);
+INSERT INTO Bodega(numero, total) values (4, 4);
+INSERT INTO Bodega(numero, total) values (5, 5);
+INSERT INTO Bodega(numero, total) values (6, 6);
+INSERT INTO Bodega(numero, total) values (7, 7);
+INSERT INTO Bodega(numero, total) values (8, 8);
+INSERT INTO Bodega(numero, total) values (9, 9);
+INSERT INTO Bodega(numero, total) values (10, 10);
+
+
+INSERT INTO Capacitacion(nombre, tipo, numero) values ('Nombre1', 'Tipo1', 1);
+INSERT INTO Capacitacion(nombre, tipo, numero) values ('Nombre2', 'Tipo2', 2);
+INSERT INTO Capacitacion(nombre, tipo, numero) values ('Nombre3', 'Tipo3', 3);
+INSERT INTO Capacitacion(nombre, tipo, numero) values ('Nombre4', 'Tipo4', 4);
+INSERT INTO Capacitacion(nombre, tipo, numero) values ('Nombre5', 'Tipo5', 5);
+INSERT INTO Capacitacion(nombre, tipo, numero) values ('Nombre6', 'Tipo6', 6);
+INSERT INTO Capacitacion(nombre, tipo, numero) values ('Nombre7', 'Tipo7', 7);
+INSERT INTO Capacitacion(nombre, tipo, numero) values ('Nombre8', 'Tipo8', 8);
+INSERT INTO Capacitacion(nombre, tipo, numero) values ('Nombre9', 'Tipo9', 9);
+INSERT INTO Capacitacion(nombre, tipo, numero) values ('Nombre10', 'Tipo10', 10);
+
+INSERT INTO Comprobante(fecha, cantidad, productos) values ('2022/12/4', 1, 'producto1');
+INSERT INTO Comprobante(fecha, cantidad, productos) values ('2022/12/4', 2, 'producto2');
+INSERT INTO Comprobante(fecha, cantidad, productos) values ('2022/12/4', 3, 'producto3');
+INSERT INTO Comprobante(fecha, cantidad, productos) values ('2022/12/4', 4, 'producto4');
+INSERT INTO Comprobante(fecha, cantidad, productos) values ('2022/12/4', 5, 'producto5');
+INSERT INTO Comprobante(fecha, cantidad, productos) values ('2022/12/4', 6, 'producto6');
+INSERT INTO Comprobante(fecha, cantidad, productos) values ('2022/12/4', 7, 'producto7');
+INSERT INTO Comprobante(fecha, cantidad, productos) values ('2022/12/4', 8, 'producto8');
+INSERT INTO Comprobante(fecha, cantidad, productos) values ('2022/12/4', 9, 'producto9');
+INSERT INTO Comprobante(fecha, cantidad, productos) values ('2022/12/4', 10, 'producto10');
+
+INSERT INTO Contador(nombre, apellidopaterno, apellidomaterno, calle, numero, ciudad, telefono) values ('nombre1', 'apellidop1', 'apellidom1', 'calle1', 1, 'ciudad1', 1);
+INSERT INTO Contador(nombre, apellidopaterno, apellidomaterno, calle, numero, ciudad, telefono) values ('nombre2', 'apellidop2', 'apellidom2', 'calle2', 2,'ciudad2', 2);
+INSERT INTO Contador(nombre, apellidopaterno, apellidomaterno, calle, numero, ciudad, telefono) values ('nombre3', 'apellidop3', 'apellidom3', 'calle3', 3, 'ciudad3', 3);
+INSERT INTO Contador(nombre, apellidopaterno, apellidomaterno, calle, numero, ciudad, telefono) values ('nombre4', 'apellidop4', 'apellidom4', 'calle4', 4,'ciudad4', 4);
+INSERT INTO Contador(nombre, apellidopaterno, apellidomaterno, calle, numero, ciudad, telefono) values ('nombre5', 'apellidop5', 'apellidom5', 'calle5', 5, 'ciudad5', 5);
+INSERT INTO Contador(nombre, apellidopaterno, apellidomaterno, calle, numero, ciudad, telefono) values ('nombre6', 'apellidop6', 'apellidom6', 'calle6', 6, 'ciudad6', 6);
+INSERT INTO Contador(nombre, apellidopaterno, apellidomaterno, calle, numero, ciudad, telefono) values ('nombre7', 'apellidop7', 'apellidom7', 'calle7', 7, 'ciudad7', 7);
+INSERT INTO Contador(nombre, apellidopaterno, apellidomaterno, calle, numero, ciudad, telefono) values ('nombre8', 'apellidop8', 'apellidom8', 'calle8', 8, 'ciudad8', 8);
+INSERT INTO Contador(nombre, apellidopaterno, apellidomaterno, calle, numero, ciudad, telefono) values ('nombre9', 'apellidop9', 'apellidom9', 'calle9', 9, 'ciudad9',9);
+INSERT INTO Contador(nombre, apellidopaterno, apellidomaterno, calle, numero, ciudad, telefono) values ('nombre10', 'apellidop10', 'apellidom10', 'calle10', 10,'ciudad10', 10);
+
+INSERT INTO Contrato(numero, fecha, nombre, servicios) values (1, '2022/12/4', 'nombre1', 'servicios1');
+INSERT INTO Contrato(numero, fecha, nombre, servicios) values (2, '2022/12/4', 'nombre2', 'servicios2');
+INSERT INTO Contrato(numero, fecha, nombre, servicios) values (3, '2022/12/4', 'nombre3', 'servicios3');
+INSERT INTO Contrato(numero, fecha, nombre, servicios) values (4, '2022/12/4', 'nombre4', 'servicios4');
+INSERT INTO Contrato(numero, fecha, nombre, servicios) values (5, '2022/12/4', 'nombre5', 'servicios5');
+INSERT INTO Contrato(numero, fecha, nombre, servicios) values (6, '2022/12/4', 'nombre6', 'servicios6');
+INSERT INTO Contrato(numero, fecha, nombre, servicios) values (7, '2022/12/4', 'nombre7', 'servicios7');
+INSERT INTO Contrato(numero, fecha, nombre, servicios) values (8, '2022/12/4', 'nombre8', 'servicios8');
+INSERT INTO Contrato(numero, fecha, nombre, servicios) values (9, '2022/12/4', 'nombre9', 'servicios9');
+INSERT INTO Contrato(numero, fecha, nombre, servicios) values (10, '2022/12/4', 'nombre10', 'servicios10');
+
+INSERT INTO Convenio(fecha, cantidad) values ('2022/12/4', 1);
+INSERT INTO Convenio(fecha, cantidad) values ('2022/12/4', 2);
+INSERT INTO Convenio(fecha, cantidad) values ('2022/12/4', 3);
+INSERT INTO Convenio(fecha, cantidad) values ('2022/12/4', 4);
+INSERT INTO Convenio(fecha, cantidad) values ('2022/12/4', 5);
+INSERT INTO Convenio(fecha, cantidad) values ('2022/12/4', 6);
+INSERT INTO Convenio(fecha, cantidad) values ('2022/12/4', 7);
+INSERT INTO Convenio(fecha, cantidad) values ('2022/12/4', 8);
+INSERT INTO Convenio(fecha, cantidad) values ('2022/12/4', 9);
+INSERT INTO Convenio(fecha, cantidad) values ('2022/12/4', 10);
+
+INSERT INTO Cotizacion(cantidad, producto) values (1, 'producto1');
+INSERT INTO Cotizacion(cantidad, producto) values (2, 'producto2');
+INSERT INTO Cotizacion(cantidad, producto) values (3, 'producto3');
+INSERT INTO Cotizacion(cantidad, producto) values (4, 'producto4');
+INSERT INTO Cotizacion(cantidad, producto) values (5, 'producto5');
+INSERT INTO Cotizacion(cantidad, producto) values (6, 'producto6');
+INSERT INTO Cotizacion(cantidad, producto) values (7, 'producto7');
+INSERT INTO Cotizacion(cantidad, producto) values (8, 'producto8');
+INSERT INTO Cotizacion(cantidad, producto) values (9, 'producto9');
+INSERT INTO Cotizacion(cantidad, producto) values (10, 'producto10');
+
+
+INSERT INTO Credito(creditoDisponible, creditoDebe, fecha) values (1, 1, '2022/12/4');
+INSERT INTO Credito(creditoDisponible, creditoDebe, fecha) values (2, 2, '2022/12/4');
+INSERT INTO Credito(creditoDisponible, creditoDebe, fecha) values (3, 3, '2022/12/4');
+INSERT INTO Credito(creditoDisponible, creditoDebe, fecha) values (4, 4, '2022/12/4');
+INSERT INTO Credito(creditoDisponible, creditoDebe, fecha) values (5, 5, '2022/12/4');
+INSERT INTO Credito(creditoDisponible, creditoDebe, fecha) values (6, 6, '2022/12/4');
+INSERT INTO Credito(creditoDisponible, creditoDebe, fecha) values (7, 7, '2022/12/4');
+INSERT INTO Credito(creditoDisponible, creditoDebe, fecha) values (8, 8, '2022/12/4');
+INSERT INTO Credito(creditoDisponible, creditoDebe, fecha) values (9, 9, '2022/12/4');
+INSERT INTO Credito(creditoDisponible, creditoDebe, fecha) values (10, 10, '2022/12/4');
+
+INSERT INTO Empleado(nombre, apellidopaterno, apellidomaterno, curp, telefono, calle, numero, colonia, ciudad) values('nombre1', 'apellidopaterno1', 'apellidomaterno1', 'curp1', 1, 'calle1', 1, 'colonia1', 'ciudad1');
+INSERT INTO Empleado(nombre, apellidopaterno, apellidomaterno, curp, telefono, calle, numero, colonia, ciudad) values('nombre2', 'apellidopaterno2', 'apellidomaterno2', 'curp2', 2, 'calle1', 2, 'colonia2', 'ciudad2');
+INSERT INTO Empleado(nombre, apellidopaterno, apellidomaterno, curp, telefono, calle, numero, colonia, ciudad) values('nombre3', 'apellidopaterno3', 'apellidomaterno3', 'curp3', 3, 'calle1', 3, 'colonia3', 'ciudad3');
+INSERT INTO Empleado(nombre, apellidopaterno, apellidomaterno, curp, telefono, calle, numero, colonia, ciudad) values('nombre4', 'apellidopaterno4', 'apellidomaterno4', 'curp4', 4, 'calle1', 4, 'colonia4', 'ciudad4');
+INSERT INTO Empleado(nombre, apellidopaterno, apellidomaterno, curp, telefono, calle, numero, colonia, ciudad) values('nombre5', 'apellidopaterno5', 'apellidomaterno5', 'curp5', 5, 'calle1', 5, 'colonia5', 'ciudad5');
+INSERT INTO Empleado(nombre, apellidopaterno, apellidomaterno, curp, telefono, calle, numero, colonia, ciudad) values('nombre6', 'apellidopaterno6', 'apellidomaterno6', 'curp6', 6, 'calle1', 6, 'colonia6', 'ciudad6');
+INSERT INTO Empleado(nombre, apellidopaterno, apellidomaterno, curp, telefono, calle, numero, colonia, ciudad) values('nombre7', 'apellidopaterno7', 'apellidomaterno7', 'curp7', 7, 'calle1', 7, 'colonia7', 'ciudad7');
+INSERT INTO Empleado(nombre, apellidopaterno, apellidomaterno, curp, telefono, calle, numero, colonia, ciudad) values('nombre8', 'apellidopaterno8', 'apellidomaterno8', 'curp8', 8, 'calle1', 8, 'colonia8', 'ciudad8');
+INSERT INTO Empleado(nombre, apellidopaterno, apellidomaterno, curp, telefono, calle, numero, colonia, ciudad) values('nombre8', 'apellidopaterno9', 'apellidomaterno9', 'curp9', 9, 'calle1', 9, 'colonia9', 'ciudad9');
+INSERT INTO Empleado(nombre, apellidopaterno, apellidomaterno, curp, telefono, calle, numero, colonia, ciudad) values('nombre10', 'apellidopaterno10', 'apellidomaterno10', 'curp10', 10, 'calle1', 10, 'colonia10', 'ciudad10');
+
+INSERT INTO Empresa(nombre, telefono, calle, estado, numero, colonia, ciudad) values('nombre1', 1, 'calle1', 'estado1', 1, 'colonia1', 'ciudad1');
+INSERT INTO Empresa(nombre, telefono, calle, estado, numero, colonia, ciudad) values('nombre2', 2, 'calle2', 'estado2', 2, 'colonia2', 'ciudad2');
+INSERT INTO Empresa(nombre, telefono, calle, estado, numero, colonia, ciudad) values('nombre3', 3, 'calle3', 'estado3', 3, 'colonia3', 'ciudad3');
+INSERT INTO Empresa(nombre, telefono, calle, estado, numero, colonia, ciudad) values('nombre4', 4, 'calle4', 'estado4', 4, 'colonia4', 'ciudad4');
+INSERT INTO Empresa(nombre, telefono, calle, estado, numero, colonia, ciudad) values('nombre5', 5, 'calle5', 'estado5', 5, 'colonia5', 'ciudad5');
+INSERT INTO Empresa(nombre, telefono, calle, estado, numero, colonia, ciudad) values('nombre6', 6, 'calle6', 'estado6', 6, 'colonia6', 'ciudad6');
+INSERT INTO Empresa(nombre, telefono, calle, estado, numero, colonia, ciudad) values('nombre7', 7, 'calle7', 'estado7', 7, 'colonia7', 'ciudad7');
+INSERT INTO Empresa(nombre, telefono, calle, estado, numero, colonia, ciudad) values('nombre8', 8, 'calle8', 'estado8', 8, 'colonia8', 'ciudad8');
+INSERT INTO Empresa(nombre, telefono, calle, estado, numero, colonia, ciudad) values('nombre9', 9, 'calle9', 'estado9', 9, 'colonia9', 'ciudad9');
+INSERT INTO Empresa(nombre, telefono, calle, estado, numero, colonia, ciudad) values('nombre10', 10, 'calle10', 'estado10', 10, 'colonia10', 'ciudad10');
+
+INSERT INTO Envio(nombre, apellidopaterno, apellidomaterno, calle, estado, numero, colonia, ciudad, cantidad, categoria, fecha) values ('nombre1', 'apellidopaterno1', 'apellidomaterno1', 'calle1', 'estado1', 1, 'colonia1', 'ciudad1', 1, 'categoria1', '2022/12/4');
+INSERT INTO Envio(nombre, apellidopaterno, apellidomaterno, calle, estado, numero, colonia, ciudad, cantidad, categoria, fecha) values ('nombre2', 'apellidopaterno2', 'apellidomaterno2', 'calle2', 'estado2', 2, 'colonia2', 'ciudad2', 2, 'categoria2', '2022/12/4');
+INSERT INTO Envio(nombre, apellidopaterno, apellidomaterno, calle, estado, numero, colonia, ciudad, cantidad, categoria, fecha) values ('nombre3', 'apellidopaterno3', 'apellidomaterno3', 'calle3', 'estado3', 3, 'colonia3', 'ciudad3', 3, 'categoria3', '2022/12/4');
+INSERT INTO Envio(nombre, apellidopaterno, apellidomaterno, calle, estado, numero, colonia, ciudad, cantidad, categoria, fecha) values ('nombre4', 'apellidopaterno4', 'apellidomaterno4', 'calle4', 'estado4', 4, 'colonia4', 'ciudad4', 4, 'categoria4', '2022/12/4');
+INSERT INTO Envio(nombre, apellidopaterno, apellidomaterno, calle, estado, numero, colonia, ciudad, cantidad, categoria, fecha) values ('nombre5', 'apellidopaterno5', 'apellidomaterno5', 'calle5', 'estado5', 5, 'colonia5', 'ciudad5', 5, 'categoria5', '2022/12/4');
+INSERT INTO Envio(nombre, apellidopaterno, apellidomaterno, calle, estado, numero, colonia, ciudad, cantidad, categoria, fecha) values ('nombre6', 'apellidopaterno6', 'apellidomaterno6', 'calle6', 'estado6', 6, 'colonia6', 'ciudad6', 6, 'categoria6', '2022/12/4');
+INSERT INTO Envio(nombre, apellidopaterno, apellidomaterno, calle, estado, numero, colonia, ciudad, cantidad, categoria, fecha) values ('nombre7', 'apellidopaterno7', 'apellidomaterno7', 'calle7', 'estado7', 7, 'colonia7', 'ciudad7', 7, 'categoria7', '2022/12/4');
+INSERT INTO Envio(nombre, apellidopaterno, apellidomaterno, calle, estado, numero, colonia, ciudad, cantidad, categoria, fecha) values ('nombre8', 'apellidopaterno8', 'apellidomaterno8', 'calle8', 'estado8', 8, 'colonia8', 'ciudad8', 8, 'categoria8', '2022/12/4');
+INSERT INTO Envio(nombre, apellidopaterno, apellidomaterno, calle, estado, numero, colonia, ciudad, cantidad, categoria, fecha) values ('nombre9', 'apellidopaterno9', 'apellidomaterno9', 'calle9', 'estado9', 9, 'colonia9', 'ciudad9', 9, 'categoria9', '2022/12/4');
+INSERT INTO Envio(nombre, apellidopaterno, apellidomaterno, calle, estado, numero, colonia, ciudad, cantidad, categoria, fecha) values ('nombre10', 'apellidopaterno10', 'apellidomaterno10', 'calle10', 'estado10', 10, 'colonia10', 'ciudad10', 10, 'categoria10', '2022/12/4');
+
+
+INSERT INTO Estacionamiento(lugar, tipo) values (1, 'tipo1');
+INSERT INTO Estacionamiento(lugar, tipo) values (2, 'tipo2');
+INSERT INTO Estacionamiento(lugar, tipo) values (3, 'tipo3');
+INSERT INTO Estacionamiento(lugar, tipo) values (4, 'tipo4');
+INSERT INTO Estacionamiento(lugar, tipo) values (5, 'tipo5');
+INSERT INTO Estacionamiento(lugar, tipo) values (6, 'tipo6');
+INSERT INTO Estacionamiento(lugar, tipo) values (7, 'tipo7');
+INSERT INTO Estacionamiento(lugar, tipo) values (8, 'tipo8');
+INSERT INTO Estacionamiento(lugar, tipo) values (9, 'tipo9');
+INSERT INTO Estacionamiento(lugar, tipo) values (10, 'tipo10');
+
+INSERT INTO Inventario(nombre, tipo, fecha) values ('nombre1', 'tipo1', '2022/12/4');
+INSERT INTO Inventario(nombre, tipo, fecha) values ('nombre2', 'tipo2', '2022/12/4');
+INSERT INTO Inventario(nombre, tipo, fecha) values ('nombre3', 'tipo3', '2022/12/4');
+INSERT INTO Inventario(nombre, tipo, fecha) values ('nombre4', 'tipo4', '2022/12/4');
+INSERT INTO Inventario(nombre, tipo, fecha) values ('nombre5', 'tipo5', '2022/12/4');
+INSERT INTO Inventario(nombre, tipo, fecha) values ('nombre6', 'tipo6', '2022/12/4');
+INSERT INTO Inventario(nombre, tipo, fecha) values ('nombre7', 'tipo7', '2022/12/4');
+INSERT INTO Inventario(nombre, tipo, fecha) values ('nombre8', 'tipo8', '2022/12/4');
+INSERT INTO Inventario(nombre, tipo, fecha) values ('nombre9', 'tipo9', '2022/12/4');
+INSERT INTO Inventario(nombre, tipo, fecha) values ('nombre10', 'tipo10', '2022/12/4');
+
+INSERT INTO Marca(nombre, ciudad) values ('nombre1', 'ciudad1');
+INSERT INTO Marca(nombre, ciudad) values ('nombre2', 'ciudad2');
+INSERT INTO Marca(nombre, ciudad) values ('nombre3', 'ciudad3');
+INSERT INTO Marca(nombre, ciudad) values ('nombre4', 'ciudad4');
+INSERT INTO Marca(nombre, ciudad) values ('nombre5', 'ciudad5');
+INSERT INTO Marca(nombre, ciudad) values ('nombre6', 'ciudad6');
+INSERT INTO Marca(nombre, ciudad) values ('nombre7', 'ciudad7');
+INSERT INTO Marca(nombre, ciudad) values ('nombre8', 'ciudad8');
+INSERT INTO Marca(nombre, ciudad) values ('nombre9', 'ciudad9');
+INSERT INTO Marca(nombre, ciudad) values ('nombre10', 'ciudad10');
+
+INSERT INTO Oferta(producto, precio, precioanterior) values ('producto1', 'precio1', 'precioanterior1');
+INSERT INTO Oferta(producto, precio, precioanterior) values ('producto2', 'precio2', 'precioanterior2');
+INSERT INTO Oferta(producto, precio, precioanterior) values ('producto3', 'precio3', 'precioanterior3');
+INSERT INTO Oferta(producto, precio, precioanterior) values ('producto4', 'precio4', 'precioanterior4');
+INSERT INTO Oferta(producto, precio, precioanterior) values ('producto5', 'precio5', 'precioanterior5');
+INSERT INTO Oferta(producto, precio, precioanterior) values ('producto6', 'precio6', 'precioanterior6');
+INSERT INTO Oferta(producto, precio, precioanterior) values ('producto7', 'precio7', 'precioanterior7');
+INSERT INTO Oferta(producto, precio, precioanterior) values ('producto8', 'precio8', 'precioanterior8');
+INSERT INTO Oferta(producto, precio, precioanterior) values ('producto9', 'precio9', 'precioanterior9');
+INSERT INTO Oferta(producto, precio, precioanterior) values ('producto10', 'precio10', 'precioanterior10');
+
+INSERT INTO PedidoLinea(fecha, cantidad, producto, total) values ('2022/12/4', 1, 'producto1', '1');
+INSERT INTO PedidoLinea(fecha, cantidad, producto, total) values ('2022/12/4', 2, 'producto2', '2');
+INSERT INTO PedidoLinea(fecha, cantidad, producto, total) values ('2022/12/4', 3, 'producto3', '3');
+INSERT INTO PedidoLinea(fecha, cantidad, producto, total) values ('2022/12/4', 4, 'producto4', '4');
+INSERT INTO PedidoLinea(fecha, cantidad, producto, total) values ('2022/12/4', 5, 'producto5', '5');
+INSERT INTO PedidoLinea(fecha, cantidad, producto, total) values ('2022/12/4', 6, 'producto6', '6');
+INSERT INTO PedidoLinea(fecha, cantidad, producto, total) values ('2022/12/4', 7, 'producto7', '7');
+INSERT INTO PedidoLinea(fecha, cantidad, producto, total) values ('2022/12/4', 8, 'producto8', '8');
+INSERT INTO PedidoLinea(fecha, cantidad, producto, total) values ('2022/12/4', 9, 'producto9', '9');
+INSERT INTO PedidoLinea(fecha, cantidad, producto, total) values ('2022/12/4', 10, 'producto10', '10');
+
+INSERT INTO Prestacion(tipo) values ('tipo1');
+INSERT INTO Prestacion(tipo) values ('tipo2');
+INSERT INTO Prestacion(tipo) values ('tipo3');
+INSERT INTO Prestacion(tipo) values ('tipo4');
+INSERT INTO Prestacion(tipo) values ('tipo5');
+INSERT INTO Prestacion(tipo) values ('tipo6');
+INSERT INTO Prestacion(tipo) values ('tipo7');
+INSERT INTO Prestacion(tipo) values ('tipo8');
+INSERT INTO Prestacion(tipo) values ('tipo9');
+INSERT INTO Prestacion(tipo) values ('tipo10');
+
+INSERT INTO Proveedor(nombre, apellidopaterno, apellidomaterno, calle, numero, ciudad, telefono) values ('nombre1' , 'apellidopaterno1', 'apellidomaterno1', 'calle1', 1, 'ciudad1', 1);
+INSERT INTO Proveedor(nombre, apellidopaterno, apellidomaterno, calle, numero, ciudad, telefono) values ('nombre2' , 'apellidopaterno2', 'apellidomaterno2', 'calle2', 2, 'ciudad2', 2);
+INSERT INTO Proveedor(nombre, apellidopaterno, apellidomaterno, calle, numero, ciudad, telefono) values ('nombre3' , 'apellidopaterno3', 'apellidomaterno3', 'calle3', 3, 'ciudad3', 3);
+INSERT INTO Proveedor(nombre, apellidopaterno, apellidomaterno, calle, numero, ciudad, telefono) values ('nombre4' , 'apellidopaterno4', 'apellidomaterno4', 'calle4', 4, 'ciudad4', 4);
+INSERT INTO Proveedor(nombre, apellidopaterno, apellidomaterno, calle, numero, ciudad, telefono) values ('nombre5' , 'apellidopaterno5', 'apellidomaterno5', 'calle5', 5, 'ciudad5', 5);
+INSERT INTO Proveedor(nombre, apellidopaterno, apellidomaterno, calle, numero, ciudad, telefono) values ('nombre6' , 'apellidopaterno6', 'apellidomaterno6', 'calle6', 6, 'ciudad6', 6);
+INSERT INTO Proveedor(nombre, apellidopaterno, apellidomaterno, calle, numero, ciudad, telefono) values ('nombre7' , 'apellidopaterno7', 'apellidomaterno7', 'calle7', 7, 'ciudad7', 7);
+INSERT INTO Proveedor(nombre, apellidopaterno, apellidomaterno, calle, numero, ciudad, telefono) values ('nombre8' , 'apellidopaterno8', 'apellidomaterno8', 'calle8', 8, 'ciudad8', 8);
+INSERT INTO Proveedor(nombre, apellidopaterno, apellidomaterno, calle, numero, ciudad, telefono) values ('nombre9' , 'apellidopaterno9', 'apellidomaterno9', 'calle1', 9, 'ciudad1', 9);
+INSERT INTO Proveedor(nombre, apellidopaterno, apellidomaterno, calle, numero, ciudad, telefono) values ('nombre10' , 'apellidopaterno10', 'apellidomaterno10', 'calle10', 10, 'ciudad1', 10);
+
+INSERT INTO Queja(tipoqueja, fecha) values ('tipoqueja1', '2022/12/4');
+INSERT INTO Queja(tipoqueja, fecha) values ('tipoqueja2', '2022/12/4');
+INSERT INTO Queja(tipoqueja, fecha) values ('tipoqueja3', '2022/12/4');
+INSERT INTO Queja(tipoqueja, fecha) values ('tipoqueja4', '2022/12/4');
+INSERT INTO Queja(tipoqueja, fecha) values ('tipoqueja5', '2022/12/4');
+INSERT INTO Queja(tipoqueja, fecha) values ('tipoqueja6', '2022/12/4');
+INSERT INTO Queja(tipoqueja, fecha) values ('tipoqueja7', '2022/12/4');
+INSERT INTO Queja(tipoqueja, fecha) values ('tipoqueja8', '2022/12/4');
+INSERT INTO Queja(tipoqueja, fecha) values ('tipoqueja9', '2022/12/4');
+INSERT INTO Queja(tipoqueja, fecha) values ('tipoqueja10', '2022/12/4');
+
+INSERT INTO Representante(nombre, apellidopaterno, apellidomaterno, telefono, empresa) values ('nombre1', 'apellidopaterno1', 'apellidomaterno1', 1, 'empresa1');
+INSERT INTO Representante(nombre, apellidopaterno, apellidomaterno, telefono, empresa) values ('nombre2', 'apellidopaterno2', 'apellidomaterno2', 2, 'empresa2');
+INSERT INTO Representante(nombre, apellidopaterno, apellidomaterno, telefono, empresa) values ('nombre3', 'apellidopaterno3', 'apellidomaterno3', 3, 'empresa3');
+INSERT INTO Representante(nombre, apellidopaterno, apellidomaterno, telefono, empresa) values ('nombre4', 'apellidopaterno4', 'apellidomaterno4', 4, 'empresa4');
+INSERT INTO Representante(nombre, apellidopaterno, apellidomaterno, telefono, empresa) values ('nombre5', 'apellidopaterno5', 'apellidomaterno5', 5, 'empresa5');
+INSERT INTO Representante(nombre, apellidopaterno, apellidomaterno, telefono, empresa) values ('nombre6', 'apellidopaterno6', 'apellidomaterno6', 6, 'empresa6');
+INSERT INTO Representante(nombre, apellidopaterno, apellidomaterno, telefono, empresa) values ('nombre7', 'apellidopaterno7', 'apellidomaterno7', 7, 'empresa7');
+INSERT INTO Representante(nombre, apellidopaterno, apellidomaterno, telefono, empresa) values ('nombre8', 'apellidopaterno8', 'apellidomaterno8', 8, 'empresa8');
+INSERT INTO Representante(nombre, apellidopaterno, apellidomaterno, telefono, empresa) values ('nombre9', 'apellidopaterno9', 'apellidomaterno9', 9, 'empresa9');
+INSERT INTO Representante(nombre, apellidopaterno, apellidomaterno, telefono, empresa) values ('nombre10', 'apellidopaterno10', 'apellidomaterno10', 10, 'empresa10');
+
+INSERT INTO Restaurante(mesas, sillas, comida) values (1, 1, 'comida1');
+INSERT INTO Restaurante(mesas, sillas, comida) values (2, 2, 'comida2');
+INSERT INTO Restaurante(mesas, sillas, comida) values (3, 3, 'comida3');
+INSERT INTO Restaurante(mesas, sillas, comida) values (4, 4, 'comida4');
+INSERT INTO Restaurante(mesas, sillas, comida) values (5, 5, 'comida5');
+INSERT INTO Restaurante(mesas, sillas, comida) values (6, 6, 'comida6');
+INSERT INTO Restaurante(mesas, sillas, comida) values (7, 7, 'comida7');
+INSERT INTO Restaurante(mesas, sillas, comida) values (8, 8, 'comida8');
+INSERT INTO Restaurante(mesas, sillas, comida) values (9, 9, 'comida9');
+INSERT INTO Restaurante(mesas, sillas, comida) values (10, 10, 'comida10');
+
+INSERT INTO Sucursal(nombre, telefono, calle, estado, numero, colonia, ciudad) values ('nombre1', 1, 'calle1', 'estado1', 1, 'colonia1', 'ciudad1');
+INSERT INTO Sucursal(nombre, telefono, calle, estado, numero, colonia, ciudad) values ('nombre2', 2, 'calle2', 'estado2', 2, 'colonia2', 'ciudad2');
+INSERT INTO Sucursal(nombre, telefono, calle, estado, numero, colonia, ciudad) values ('nombre3', 3, 'calle3', 'estado3', 3, 'colonia3', 'ciudad3');
+INSERT INTO Sucursal(nombre, telefono, calle, estado, numero, colonia, ciudad) values ('nombre4', 4, 'calle4', 'estado4', 4, 'colonia4', 'ciudad4');
+INSERT INTO Sucursal(nombre, telefono, calle, estado, numero, colonia, ciudad) values ('nombre5', 5, 'calle5', 'estado5', 5, 'colonia5', 'ciudad5');
+INSERT INTO Sucursal(nombre, telefono, calle, estado, numero, colonia, ciudad) values ('nombre6', 6, 'calle6', 'estado6', 6, 'colonia6', 'ciudad6');
+INSERT INTO Sucursal(nombre, telefono, calle, estado, numero, colonia, ciudad) values ('nombre7', 7, 'calle7', 'estado7', 7, 'colonia7', 'ciudad7');
+INSERT INTO Sucursal(nombre, telefono, calle, estado, numero, colonia, ciudad) values ('nombre8', 8, 'calle8', 'estado8', 8, 'colonia8', 'ciudad8');
+INSERT INTO Sucursal(nombre, telefono, calle, estado, numero, colonia, ciudad) values ('nombre9', 9, 'calle9', 'estado9', 9, 'colonia9', 'ciudad9');
+INSERT INTO Sucursal(nombre, telefono, calle, estado, numero, colonia, ciudad) values ('nombre10', 10, 'calle10', 'estado10', 10, 'colonia10', 'ciudad10');
+
+INSERT INTO Transporte(marca, tipo) values ('marca1', 'tipo1');
+INSERT INTO Transporte(marca, tipo) values ('marca2', 'tipo2');
+INSERT INTO Transporte(marca, tipo) values ('marca3', 'tipo3');
+INSERT INTO Transporte(marca, tipo) values ('marca4', 'tipo4');
+INSERT INTO Transporte(marca, tipo) values ('marca5', 'tipo5');
+INSERT INTO Transporte(marca, tipo) values ('marca6', 'tipo6');
+INSERT INTO Transporte(marca, tipo) values ('marca7', 'tipo7');
+INSERT INTO Transporte(marca, tipo) values ('marca8', 'tipo8');
+INSERT INTO Transporte(marca, tipo) values ('marca9', 'tipo9');
+INSERT INTO Transporte(marca, tipo) values ('marca10', 'tipo10');
+
+INSERT INTO Venta(fecha, cantidad) values ('2022/12/4', 'cantidad1');
+INSERT INTO Venta(fecha, cantidad) values ('2022/12/4', 'cantidad2');
+INSERT INTO Venta(fecha, cantidad) values ('2022/12/4', 'cantidad3');
+INSERT INTO Venta(fecha, cantidad) values ('2022/12/4', 'cantidad4');
+INSERT INTO Venta(fecha, cantidad) values ('2022/12/4', 'cantidad5');
+INSERT INTO Venta(fecha, cantidad) values ('2022/12/4', 'cantidad6');
+INSERT INTO Venta(fecha, cantidad) values ('2022/12/4', 'cantidad7');
+INSERT INTO Venta(fecha, cantidad) values ('2022/12/4', 'cantidad8');
+INSERT INTO Venta(fecha, cantidad) values ('2022/12/4', 'cantidad9');
+INSERT INTO Venta(fecha, cantidad) values ('2022/12/4', 'cantidad10');
+
+
+INSERT INTO Caja(numero, persona, computadora, idSucursal, estatus) values (1, 'Persona1', 'Computadora1', '1', '1');
+INSERT INTO Caja(numero, persona, computadora, idSucursal, estatus) values (2, 'Persona2', 'Computadora2', '2', '1');
+INSERT INTO Caja(numero, persona, computadora, idSucursal, estatus) values (3, 'Persona3', 'Computadora3', '3', '1');
+INSERT INTO Caja(numero, persona, computadora, idSucursal, estatus) values (4, 'Persona4', 'Computadora4', '4', '1');
+INSERT INTO Caja(numero, persona, computadora, idSucursal, estatus) values (5, 'Persona5', 'Computadora5', '5', '1');
+INSERT INTO Caja(numero, persona, computadora, idSucursal, estatus) values (6, 'Persona6', 'Computadora6', '6', '1');
+INSERT INTO Caja(numero, persona, computadora, idSucursal, estatus) values (7, 'Persona7', 'Computadora7', '7', '1');
+INSERT INTO Caja(numero, persona, computadora, idSucursal, estatus) values (8, 'Persona8', 'Computadora8', '8', '1');
+INSERT INTO Caja(numero, persona, computadora, idSucursal, estatus) values (9, 'Persona9', 'Computadora9', '9', '1');
+INSERT INTO Caja(numero, persona, computadora, idSucursal, estatus) values (10, 'Persona10', 'Computadora10', '10', '1');
+
+
+INSERT INTO Membresia(nombre, apellidopaterno, apellidomaterno, calle, colonia, ciudad, numero, idSucursal, estatus) values ('nombre1', 'apellidopaterno1', 'apellidomaterno1', 'calle1', 'colonia1', 'ciudad1', 1, '1', '1');
+INSERT INTO Membresia(nombre, apellidopaterno, apellidomaterno, calle, colonia, ciudad, numero, idSucursal, estatus) values ('nombre2', 'apellidopaterno2', 'apellidomaterno2', 'calle2', 'colonia2', 'ciudad2', 2, '2', '1');
+INSERT INTO Membresia(nombre, apellidopaterno, apellidomaterno, calle, colonia, ciudad, numero, idSucursal, estatus) values ('nombre3', 'apellidopaterno3', 'apellidomaterno3', 'calle3', 'colonia3', 'ciudad3', 3, '3', '1');
+INSERT INTO Membresia(nombre, apellidopaterno, apellidomaterno, calle, colonia, ciudad, numero, idSucursal, estatus) values ('nombre4', 'apellidopaterno4', 'apellidomaterno4', 'calle4', 'colonia4', 'ciudad4', 4, '4', '1');
+INSERT INTO Membresia(nombre, apellidopaterno, apellidomaterno, calle, colonia, ciudad, numero, idSucursal, estatus) values ('nombre5', 'apellidopaterno5', 'apellidomaterno5', 'calle5', 'colonia5', 'ciudad5', 5, '5', '1');
+INSERT INTO Membresia(nombre, apellidopaterno, apellidomaterno, calle, colonia, ciudad, numero, idSucursal, estatus) values ('nombre6', 'apellidopaterno6', 'apellidomaterno6', 'calle6', 'colonia6', 'ciudad6', 6, '6', '1');
+INSERT INTO Membresia(nombre, apellidopaterno, apellidomaterno, calle, colonia, ciudad, numero, idSucursal, estatus) values ('nombre7', 'apellidopaterno7', 'apellidomaterno7', 'calle7', 'colonia7', 'ciudad7', 7, '7', '1');
+INSERT INTO Membresia(nombre, apellidopaterno, apellidomaterno, calle, colonia, ciudad, numero, idSucursal, estatus) values ('nombre8', 'apellidopaterno8', 'apellidomaterno8', 'calle8', 'colonia8', 'ciudad8', 8, '8', '1');
+INSERT INTO Membresia(nombre, apellidopaterno, apellidomaterno, calle, colonia, ciudad, numero, idSucursal, estatus) values ('nombre9', 'apellidopaterno9', 'apellidomaterno9', 'calle9', 'colonia9', 'ciudad9', 9, '9', '1');
+INSERT INTO Membresia(nombre, apellidopaterno, apellidomaterno, calle, colonia, ciudad, numero, idSucursal, estatus) values ('nombre10', 'apellidopaterno10', 'apellidomaterno10', 'calle10', 'colonia10', 'ciudad10', 10, '10', '1');
+
+INSERT INTO TarjetaPunto(puntos, beneficios, idSucursal, estatus) values (1, 'beneficio1', '1', '1');
+INSERT INTO TarjetaPunto(puntos, beneficios, idSucursal, estatus) values (2, 'beneficio2', '2', '1');
+INSERT INTO TarjetaPunto(puntos, beneficios, idSucursal, estatus) values (3, 'beneficio3', '3', '1');
+INSERT INTO TarjetaPunto(puntos, beneficios, idSucursal, estatus) values (4, 'beneficio4', '4', '1');
+INSERT INTO TarjetaPunto(puntos, beneficios, idSucursal, estatus) values (5, 'beneficio5', '5', '1');
+INSERT INTO TarjetaPunto(puntos, beneficios, idSucursal, estatus) values (6, 'beneficio6', '6', '1');
+INSERT INTO TarjetaPunto(puntos, beneficios, idSucursal, estatus) values (7, 'beneficio7', '7', '1');
+INSERT INTO TarjetaPunto(puntos, beneficios, idSucursal, estatus) values (8, 'beneficio8', '8', '1');
+INSERT INTO TarjetaPunto(puntos, beneficios, idSucursal, estatus) values (9, 'beneficio9', '9', '1');
+INSERT INTO TarjetaPunto(puntos, beneficios, idSucursal, estatus) values (10, 'beneficio10', '10', '1');
+
+INSERT INTO Cliente(nombre, apellidopaterno, apellidomaterno, telefono, idMembresia, idTarjetaPunto, estatus) values ('nombre1', 'apellidopaterno1', 'apellidomaterno1', 1, '1', '1', '1');
+INSERT INTO Cliente(nombre, apellidopaterno, apellidomaterno, telefono, idMembresia, idTarjetaPunto, estatus) values ('nombre2', 'apellidopaterno2', 'apellidomaterno2', 2, '2', '2', '1');
+INSERT INTO Cliente(nombre, apellidopaterno, apellidomaterno, telefono, idMembresia, idTarjetaPunto, estatus) values ('nombre3', 'apellidopaterno3', 'apellidomaterno3', 3, '3', '3', '1');
+INSERT INTO Cliente(nombre, apellidopaterno, apellidomaterno, telefono, idMembresia, idTarjetaPunto, estatus) values ('nombre4', 'apellidopaterno4', 'apellidomaterno4', 4, '4', '4', '1');
+INSERT INTO Cliente(nombre, apellidopaterno, apellidomaterno, telefono, idMembresia, idTarjetaPunto, estatus) values ('nombre5', 'apellidopaterno5', 'apellidomaterno5', 5, '5', '5', '1');
+INSERT INTO Cliente(nombre, apellidopaterno, apellidomaterno, telefono, idMembresia, idTarjetaPunto, estatus) values ('nombre6', 'apellidopaterno6', 'apellidomaterno6', 6, '6', '6', '1');
+INSERT INTO Cliente(nombre, apellidopaterno, apellidomaterno, telefono, idMembresia, idTarjetaPunto, estatus) values ('nombre7', 'apellidopaterno6', 'apellidomaterno7', 7, '7', '7', '1');
+INSERT INTO Cliente(nombre, apellidopaterno, apellidomaterno, telefono, idMembresia, idTarjetaPunto, estatus) values ('nombre8', 'apellidopaterno7', 'apellidomaterno8', 8, '8', '8', '1');
+INSERT INTO Cliente(nombre, apellidopaterno, apellidomaterno, telefono, idMembresia, idTarjetaPunto, estatus) values ('nombre9', 'apellidopaterno8', 'apellidomaterno9', 9, '9', '9', '1');
+INSERT INTO Cliente(nombre, apellidopaterno, apellidomaterno, telefono, idMembresia, idTarjetaPunto, estatus) values ('nombre10', 'apellidopaterno9', 'apellidomaterno10', 10, '10', '10', '1');
+
+INSERT INTO FacturaCliente(fecha, remitente, cantidad, idCliente, idContador, estatus) values ('2022/12/4', 'remitenete1', 1, '1', '1', '1');
+INSERT INTO FacturaCliente(fecha, remitente, cantidad, idCliente, idContador, estatus) values ('2022/12/4', 'remitenete2', 2, '2', '2', '1');
+INSERT INTO FacturaCliente(fecha, remitente, cantidad, idCliente, idContador, estatus) values ('2022/12/4', 'remitenete3', 3, '3', '3', '1');
+INSERT INTO FacturaCliente(fecha, remitente, cantidad, idCliente, idContador, estatus) values ('2022/12/4', 'remitenete4', 4, '4', '4', '1');
+INSERT INTO FacturaCliente(fecha, remitente, cantidad, idCliente, idContador, estatus) values ('2022/12/4', 'remitenete5', 5, '5', '5', '1');
+INSERT INTO FacturaCliente(fecha, remitente, cantidad, idCliente, idContador, estatus) values ('2022/12/4', 'remitenete6', 6, '6', '6', '1');
+INSERT INTO FacturaCliente(fecha, remitente, cantidad, idCliente, idContador, estatus) values ('2022/12/4', 'remitenete7', 7, '7', '7', '1');
+INSERT INTO FacturaCliente(fecha, remitente, cantidad, idCliente, idContador, estatus) values ('2022/12/4', 'remitenete8', 8, '8', '8', '1');
+INSERT INTO FacturaCliente(fecha, remitente, cantidad, idCliente, idContador, estatus) values ('2022/12/4', 'remitenete9', 9, '9', '9', '1');
+INSERT INTO FacturaCliente(fecha, remitente, cantidad, idCliente, idContador, estatus) values ('2022/12/4', 'remitenete10', 10, '10', '10', '1');
+
+INSERT INTO Devolucion(producto, cantidad, cantidadmonetaria, fecha, idCliente, estatus) values ('producto1', 1, 1,'2022/12/4', '1', '1');
+INSERT INTO Devolucion(producto, cantidad, cantidadmonetaria, fecha, idCliente, estatus) values ('producto2', 2, 2,'2022/12/4', '2', '1');
+INSERT INTO Devolucion(producto, cantidad, cantidadmonetaria, fecha, idCliente, estatus) values ('producto3', 3, 3,'2022/12/4', '3', '1');
+INSERT INTO Devolucion(producto, cantidad, cantidadmonetaria, fecha, idCliente, estatus) values ('producto4', 4, 4,'2022/12/4', '4', '1');
+INSERT INTO Devolucion(producto, cantidad, cantidadmonetaria, fecha,  idCliente, estatus) values ('producto5', 5, 5,'2022/12/4', '5', '1');
+INSERT INTO Devolucion(producto, cantidad, cantidadmonetaria, fecha,  idCliente, estatus) values ('producto6', 6, 6,'2022/12/4', '6', '1');
+INSERT INTO Devolucion(producto, cantidad, cantidadmonetaria, fecha,  idCliente, estatus) values ('producto7', 7, 7,'2022/12/4', '7', '1');
+INSERT INTO Devolucion(producto, cantidad, cantidadmonetaria, fecha,  idCliente, estatus) values ('producto8', 8, 8,'2022/12/4', '8', '1');
+INSERT INTO Devolucion(producto, cantidad, cantidadmonetaria, fecha,  idCliente, estatus) values ('producto9', 9, 9,'2022/12/4', '9', '1');
+INSERT INTO Devolucion(producto, cantidad, cantidadmonetaria, fecha,  idCliente, estatus) values ('producto10', 10, 10,'2022/12/4', '10', '1');
+
+INSERT INTO Produccion (fecha, total, idMarca, estatus) values ('2022/12/4', 1, '1', '1');
+INSERT INTO Produccion (fecha, total, idMarca, estatus) values ('2022/12/4', 2, '2', '1');
+INSERT INTO Produccion (fecha, total, idMarca, estatus) values ('2022/12/4', 3, '3', '1');
+INSERT INTO Produccion (fecha, total, idMarca, estatus) values ('2022/12/4', 4, '4', '1');
+INSERT INTO Produccion (fecha, total, idMarca, estatus) values ('2022/12/4', 5, '5', '1');
+INSERT INTO Produccion (fecha, total, idMarca, estatus) values ('2022/12/4', 6, '6', '1');
+INSERT INTO Produccion (fecha, total, idMarca, estatus) values ('2022/12/4', 7, '7', '1');
+INSERT INTO Produccion (fecha, total, idMarca, estatus) values ('2022/12/4', 8, '8', '1');
+INSERT INTO Produccion (fecha, total, idMarca, estatus) values ('2022/12/4', 9, '9', '1');
+INSERT INTO Produccion (fecha, total, idMarca, estatus) values ('2022/12/4', 10, '10', '1');
+
+
+INSERT INTO Producto(nombre, cantidad, categoria, idBodega, idDevolucion, idProduccion, estatus) values ('nombre1', 1, 'categoria1', '1', '1', '1', '1');
+INSERT INTO Producto(nombre, cantidad, categoria, idBodega, idDevolucion, idProduccion, estatus) values ('nombre2', 2, 'categoria2', '2', '2', '2', '1');
+INSERT INTO Producto(nombre, cantidad, categoria, idBodega, idDevolucion, idProduccion, estatus) values ('nombre3', 3, 'categoria3', '3', '3', '3', '1');
+INSERT INTO Producto(nombre, cantidad, categoria, idBodega, idDevolucion, idProduccion, estatus) values ('nombre4', 4, 'categoria4', '4', '4', '4', '1');
+INSERT INTO Producto(nombre, cantidad, categoria, idBodega, idDevolucion, idProduccion, estatus) values ('nombre5', 5, 'categoria5', '5', '5', '5', '1');
+INSERT INTO Producto(nombre, cantidad, categoria, idBodega, idDevolucion, idProduccion, estatus) values ('nombre6', 6, 'categoria6', '6', '6', '6', '1');
+INSERT INTO Producto(nombre, cantidad, categoria, idBodega, idDevolucion, idProduccion, estatus) values ('nombre7', 7, 'categoria7', '7', '7', '7', '1');
+INSERT INTO Producto(nombre, cantidad, categoria, idBodega, idDevolucion, idProduccion, estatus) values ('nombre8', 8, 'categoria8', '8', '8', '8', '1');
+INSERT INTO Producto(nombre, cantidad, categoria, idBodega, idDevolucion, idProduccion, estatus) values ('nombre9', 9, 'categoria9', '9', '9', '9', '1');
+INSERT INTO Producto(nombre, cantidad, categoria, idBodega, idDevolucion, idProduccion, estatus) values ('nombre10', 10, 'categoria10', '10', '10', '10', '1');
+
+INSERT INTO Compra(cantidad, fecha, idFacturaCliente, idProducto, estatus) values (1, '2022/12/4', '1', '1', '1');
+INSERT INTO Compra(cantidad, fecha, idFacturaCliente, idProducto, estatus) values (1, '2022/12/4', '2', '2', '1');
+INSERT INTO Compra(cantidad, fecha, idFacturaCliente, idProducto, estatus) values (1, '2022/12/4', '3', '3', '1');
+INSERT INTO Compra(cantidad, fecha, idFacturaCliente, idProducto, estatus) values (1, '2022/12/4', '4', '4', '1');
+INSERT INTO Compra(cantidad, fecha, idFacturaCliente, idProducto, estatus) values (1, '2022/12/4', '5', '5', '1');
+INSERT INTO Compra(cantidad, fecha, idFacturaCliente, idProducto, estatus) values (1, '2022/12/4', '6', '6', '1');
+INSERT INTO Compra(cantidad, fecha, idFacturaCliente, idProducto, estatus) values (1, '2022/12/4', '7', '7', '1');
+INSERT INTO Compra(cantidad, fecha, idFacturaCliente, idProducto, estatus) values (1, '2022/12/4', '8', '8', '1');
+INSERT INTO Compra(cantidad, fecha, idFacturaCliente, idProducto, estatus) values (1, '2022/12/4', '9', '9', '1');
+INSERT INTO Compra(cantidad, fecha, idFacturaCliente, idProducto, estatus) values (1, '2022/12/4', '10', '10', '1');
+
+
+
+INSERT INTO Delivery(cantidad, producto, direccion, horasalida, horallegada, idSucursal, estatus) values (1, 'producto1', 'direccion1', '2022/12/4', '2022/12/4', '1', '1');
+INSERT INTO Delivery(cantidad, producto, direccion, horasalida, horallegada, idSucursal, estatus) values (1, 'producto2', 'direccion2', '2022/12/4', '2022/12/4', '2 ', '1');
+INSERT INTO Delivery(cantidad, producto, direccion, horasalida, horallegada, idSucursal, estatus) values (1, 'producto3', 'direccion3', '2022/12/4', '2022/12/4', '3', '1');
+INSERT INTO Delivery(cantidad, producto, direccion, horasalida, horallegada, idSucursal, estatus) values (1, 'producto4', 'direccion4', '2022/12/4', '2022/12/4', '4', '1');
+INSERT INTO Delivery(cantidad, producto, direccion, horasalida, horallegada, idSucursal, estatus) values (1, 'producto5', 'direccion5', '2022/12/4', '2022/12/4', '5', '1');
+INSERT INTO Delivery(cantidad, producto, direccion, horasalida, horallegada,idSucursal, estatus) values (1, 'producto6', 'direccion6', '2022/12/4', '2022/12/4', '6', '1');
+INSERT INTO Delivery(cantidad, producto, direccion, horasalida, horallegada, idSucursal, estatus) values (1, 'producto7', 'direccion7', '2022/12/4', '2022/12/4', '7', '1');
+INSERT INTO Delivery(cantidad, producto, direccion, horasalida, horallegada, idSucursal, estatus) values (1, 'producto8', 'direccion8', '2022/12/4', '2022/12/4', '8', '1');
+INSERT INTO Delivery(cantidad, producto, direccion, horasalida, horallegada, idSucursal, estatus) values (1, 'producto9', 'direccion9', '2022/12/4', '2022/12/4', '9', '1');
+INSERT INTO Delivery(cantidad, producto, direccion, horasalida, horallegada, idSucursal, estatus) values (1, 'producto10', 'direccion10', '2022/12/4', '2022/12/4', '10', '1');
+
+INSERT INTO Departamento(nombre, categoria, idSucursal, estatus) values ('nombre1', 'categoria1', '1', '1');
+INSERT INTO Departamento(nombre, categoria, idSucursal, estatus) values ('nombre2', 'categoria2', '2', '1');
+INSERT INTO Departamento(nombre, categoria, idSucursal, estatus) values ('nombre3', 'categoria3', '3', '1');
+INSERT INTO Departamento(nombre, categoria, idSucursal, estatus) values ('nombre4', 'categoria4', '4', '1');
+INSERT INTO Departamento(nombre, categoria, idSucursal, estatus) values ('nombre5', 'categoria5', '5', '1');
+INSERT INTO Departamento(nombre, categoria, idSucursal, estatus) values ('nombre6', 'categoria6', '6', '1');
+INSERT INTO Departamento(nombre, categoria, idSucursal, estatus) values ('nombre7', 'categoria7', '7', '1');
+INSERT INTO Departamento(nombre, categoria, idSucursal, estatus) values ('nombre8', 'categoria8', '8', '1');
+INSERT INTO Departamento(nombre, categoria, idSucursal, estatus) values ('nombre9', 'categoria9', '9', '1');
+INSERT INTO Departamento(nombre, categoria, idSucursal, estatus) values ('nombre10', 'categoria10', '10', '1');
+
+
+
+INSERT INTO DevolucionProveedor(producto, cantidad, cantidadmonetaria, fecha, idProveedor, estatus) values ('producto1', 1, 1, '2022/12/4', '1', '1');
+INSERT INTO DevolucionProveedor(producto, cantidad, cantidadmonetaria, fecha,  idProveedor, estatus) values ('producto2', 2, 2, '2022/12/4', '2', '1');
+INSERT INTO DevolucionProveedor(producto, cantidad, cantidadmonetaria, fecha,  idProveedor, estatus) values ('producto3', 3, 3, '2022/12/4', '3', '1');
+INSERT INTO DevolucionProveedor(producto, cantidad, cantidadmonetaria, fecha,  idProveedor, estatus) values ('producto4', 4, 4, '2022/12/4', '4', '1');
+INSERT INTO DevolucionProveedor(producto, cantidad, cantidadmonetaria, fecha,  idProveedor, estatus) values ('producto5', 5, 5, '2022/12/4', '5', '1');
+INSERT INTO DevolucionProveedor(producto, cantidad, cantidadmonetaria, fecha,  idProveedor, estatus) values ('producto6', 6, 6, '2022/12/4', '6', '1');
+INSERT INTO DevolucionProveedor(producto, cantidad, cantidadmonetaria, fecha,  idProveedor, estatus) values ('producto7', 7, 7, '2022/12/4', '7', '1');
+INSERT INTO DevolucionProveedor(producto, cantidad, cantidadmonetaria, fecha,  idProveedor, estatus) values ('producto8', 8, 8, '2022/12/4', '8', '1');
+INSERT INTO DevolucionProveedor(producto, cantidad, cantidadmonetaria, fecha,  idProveedor, estatus) values ('producto9', 9, 9, '2022/12/4', '9', '1');
+INSERT INTO DevolucionProveedor(producto, cantidad, cantidadmonetaria, fecha,  idProveedor, estatus) values ('producto10', 10, 10, '2022/12/4', '10', '1');
+
+INSERT INTO EquipoInformatico(tipo, cantidad, total, idSucursal, estatus) values ('tipo1', 1, 1, '1', '1');
+INSERT INTO EquipoInformatico(tipo, cantidad, total, idSucursal, estatus) values ('tipo1', 2, 2, '2', '1');
+INSERT INTO EquipoInformatico(tipo, cantidad, total, idSucursal, estatus) values ('tipo1', 3, 3, '3', '1');
+INSERT INTO EquipoInformatico(tipo, cantidad, total, idSucursal, estatus) values ('tipo1', 4, 4, '4', '1');
+INSERT INTO EquipoInformatico(tipo, cantidad, total, idSucursal, estatus) values ('tipo1', 5, 5, '5', '1');
+INSERT INTO EquipoInformatico(tipo, cantidad, total, idSucursal, estatus) values ('tipo1', 6, 6, '6', '1');
+INSERT INTO EquipoInformatico(tipo, cantidad, total, idSucursal, estatus) values ('tipo1', 7, 7, '7', '1');
+INSERT INTO EquipoInformatico(tipo, cantidad, total, idSucursal, estatus) values ('tipo1', 8, 8, '8', '1');
+INSERT INTO EquipoInformatico(tipo, cantidad, total, idSucursal, estatus) values ('tipo1', 9, 9, '9', '1');
+INSERT INTO EquipoInformatico(tipo, cantidad, total, idSucursal, estatus) values ('tipo1', 10, 10, '10', '1');
+
+INSERT INTO FacturaProveedor(fecha, remitente, cantidad, idContador, estatus) values ('2022/12/4', 'remitenete1', 1, '1', '1');
+INSERT INTO FacturaProveedor(fecha, remitente, cantidad, idContador, estatus) values ('2022/12/4', 'remitenete2', 2, '2', '1');
+INSERT INTO FacturaProveedor(fecha, remitente, cantidad, idContador, estatus) values ('2022/12/4', 'remitenete3', 3, '3', '1');
+INSERT INTO FacturaProveedor(fecha, remitente, cantidad, idContador, estatus) values ('2022/12/4', 'remitenete4', 4, '4', '1');
+INSERT INTO FacturaProveedor(fecha, remitente, cantidad, idContador, estatus) values ('2022/12/4', 'remitenete5', 5, '5', '1');
+INSERT INTO FacturaProveedor(fecha, remitente, cantidad, idContador, estatus) values ('2022/12/4', 'remitenete6', 6, '6', '1');
+INSERT INTO FacturaProveedor(fecha, remitente, cantidad, idContador, estatus) values ('2022/12/4', 'remitenete7', 7, '7', '1');
+INSERT INTO FacturaProveedor(fecha, remitente, cantidad, idContador, estatus) values ('2022/12/4', 'remitenete8', 8, '8', '1');
+INSERT INTO FacturaProveedor(fecha, remitente, cantidad, idContador, estatus) values ('2022/12/4', 'remitenete9', 9, '9', '1');
+INSERT INTO FacturaProveedor(fecha, remitente, cantidad, idContador, estatus) values ('2022/12/4', 'remitenete10', 10, '10', '1');
+
+
+INSERT INTO HorarioTrabajador(entrada, salida, idEmpleado, estatus) values ('2022/12/4', '2022/12/4', '1', '1');
+INSERT INTO HorarioTrabajador(entrada, salida, idEmpleado, estatus) values ('2022/12/4', '2022/12/4', '2', '1');
+INSERT INTO HorarioTrabajador(entrada, salida, idEmpleado, estatus) values ('2022/12/4', '2022/12/4', '3', '1');
+INSERT INTO HorarioTrabajador(entrada, salida, idEmpleado, estatus) values ('2022/12/4', '2022/12/4', '4', '1');
+INSERT INTO HorarioTrabajador(entrada, salida, idEmpleado, estatus) values ('2022/12/4', '2022/12/4', '5', '1');
+INSERT INTO HorarioTrabajador(entrada, salida, idEmpleado, estatus) values ('2022/12/4', '2022/12/4', '6', '1');
+INSERT INTO HorarioTrabajador(entrada, salida, idEmpleado, estatus) values ('2022/12/4', '2022/12/4', '7', '1');
+INSERT INTO HorarioTrabajador(entrada, salida, idEmpleado, estatus) values ('2022/12/4', '2022/12/4', '8', '1');
+INSERT INTO HorarioTrabajador(entrada, salida, idEmpleado, estatus) values ('2022/12/4', '2022/12/4', '9', '1');
+INSERT INTO HorarioTrabajador(entrada, salida, idEmpleado, estatus) values ('2022/12/4', '2022/12/4', '10', '1');
+
+
+INSERT INTO Mantenimiento(persona, tipo, fecha, idSucursal, estatus) values ('persona1', 'tipo1', '2022/12/4', '1', '1');
+INSERT INTO Mantenimiento(persona, tipo, fecha, idSucursal, estatus) values ('persona2', 'tipo2', '2022/12/4', '2', '1');
+INSERT INTO Mantenimiento(persona, tipo, fecha, idSucursal, estatus) values ('persona3', 'tipo3', '2022/12/4', '3', '1');
+INSERT INTO Mantenimiento(persona, tipo, fecha, idSucursal, estatus) values ('persona4', 'tipo4', '2022/12/4', '4', '1');
+INSERT INTO Mantenimiento(persona, tipo, fecha, idSucursal, estatus) values ('persona5', 'tipo5', '2022/12/4', '5', '1');
+INSERT INTO Mantenimiento(persona, tipo, fecha, idSucursal, estatus) values ('persona6', 'tipo6', '2022/12/4', '6', '1');
+INSERT INTO Mantenimiento(persona, tipo, fecha, idSucursal, estatus) values ('persona7', 'tipo7', '2022/12/4', '7', '1');
+INSERT INTO Mantenimiento(persona, tipo, fecha, idSucursal, estatus) values ('persona8', 'tipo8', '2022/12/4', '8', '1');
+INSERT INTO Mantenimiento(persona, tipo, fecha, idSucursal, estatus) values ('persona9', 'tipo9', '2022/12/4', '9', '1');
+INSERT INTO Mantenimiento(persona, tipo, fecha, idSucursal, estatus) values ('persona10', 'tipo10', '2022/12/4', '10', '1');
+
+
+INSERT INTO Marketing(tipo, lugar, idSucursal, estatus) values ('tipo1', 'lugar1', '1', '1');
+INSERT INTO Marketing(tipo, lugar, idSucursal, estatus) values ('tipo2', 'lugar2', '2', '1');
+INSERT INTO Marketing(tipo, lugar, idSucursal, estatus) values ('tipo3', 'lugar3', '3', '1');
+INSERT INTO Marketing(tipo, lugar, idSucursal, estatus) values ('tipo4', 'lugar4', '4', '1');
+INSERT INTO Marketing(tipo, lugar, idSucursal, estatus) values ('tipo5', 'lugar5', '5', '1');
+INSERT INTO Marketing(tipo, lugar, idSucursal, estatus) values ('tipo6', 'lugar6', '6', '1');
+INSERT INTO Marketing(tipo, lugar, idSucursal, estatus) values ('tipo7', 'lugar7', '7', '1');
+INSERT INTO Marketing(tipo, lugar, idSucursal, estatus) values ('tipo8', 'lugar8', '8', '1');
+INSERT INTO Marketing(tipo, lugar, idSucursal, estatus) values ('tipo9', 'lugar9', '9', '1');
+INSERT INTO Marketing(tipo, lugar, idSucursal, estatus) values ('tipo10', 'lugar10', '10', '1');
+
+
+INSERT INTO MateriaPrima(material, nombre, cantidad, idProducto, estatus) values ('material1', 'nombre1', 1, '1', '1');
+INSERT INTO MateriaPrima(material, nombre, cantidad, idProducto, estatus) values ('material2', 'nombre2', 2, '2', '1');
+INSERT INTO MateriaPrima(material, nombre, cantidad, idProducto, estatus) values ('material3', 'nombre3', 3, '3', '1');
+INSERT INTO MateriaPrima(material, nombre, cantidad, idProducto, estatus) values ('material4', 'nombre4', 4, '4', '1');
+INSERT INTO MateriaPrima(material, nombre, cantidad, idProducto, estatus) values ('material5', 'nombre5', 5, '5', '1');
+INSERT INTO MateriaPrima(material, nombre, cantidad, idProducto, estatus) values ('material6', 'nombre6', 6, '6', '1');
+INSERT INTO MateriaPrima(material, nombre, cantidad, idProducto, estatus) values ('material7', 'nombre7', 7, '7', '1');
+INSERT INTO MateriaPrima(material, nombre, cantidad, idProducto, estatus) values ('material8', 'nombre8', 8, '8', '1');
+INSERT INTO MateriaPrima(material, nombre, cantidad, idProducto, estatus) values ('material9', 'nombre9', 9, '9', '1');
+INSERT INTO MateriaPrima(material, nombre, cantidad, idProducto, estatus) values ('material10', 'nombre10', 10, '10', '1');
+
+
+INSERT INTO MetodoPago(tipo, idCliente, estatus) values ('tipo1', '1', '1');
+INSERT INTO MetodoPago(tipo, idCliente, estatus) values ('tipo2', '2', '1');
+INSERT INTO MetodoPago(tipo, idCliente, estatus) values ('tipo3', '3', '1');
+INSERT INTO MetodoPago(tipo, idCliente, estatus) values ('tipo4', '4', '1');
+INSERT INTO MetodoPago(tipo, idCliente, estatus) values ('tipo5', '5', '1');
+INSERT INTO MetodoPago(tipo, idCliente, estatus) values ('tipo6', '6', '1');
+INSERT INTO MetodoPago(tipo, idCliente, estatus) values ('tipo7', '7', '1');
+INSERT INTO MetodoPago(tipo, idCliente, estatus) values ('tipo8', '8', '1');
+INSERT INTO MetodoPago(tipo, idCliente, estatus) values ('tipo9', '9', '1');
+INSERT INTO MetodoPago(tipo, idCliente, estatus) values ('tipo10', '10', '1');
+
+INSERT INTO Mobiliario(nombre, cantidad, categoria, idSucursal, estatus) values ('nombre1', 1, 'categoria1', '1', '1');
+INSERT INTO Mobiliario(nombre, cantidad, categoria, idSucursal, estatus) values ('nombre2', 2, 'categoria2', '2', '1');
+INSERT INTO Mobiliario(nombre, cantidad, categoria, idSucursal, estatus) values ('nombre3', 3, 'categoria3', '3', '1');
+INSERT INTO Mobiliario(nombre, cantidad, categoria, idSucursal, estatus) values ('nombre4', 4, 'categoria4', '4', '1');
+INSERT INTO Mobiliario(nombre, cantidad, categoria, idSucursal, estatus) values ('nombre5', 5, 'categoria5', '5', '1');
+INSERT INTO Mobiliario(nombre, cantidad, categoria, idSucursal, estatus) values ('nombre6', 6, 'categoria6', '6', '1');
+INSERT INTO Mobiliario(nombre, cantidad, categoria, idSucursal, estatus) values ('nombre7', 7, 'categoria7', '7', '1');
+INSERT INTO Mobiliario(nombre, cantidad, categoria, idSucursal, estatus) values ('nombre8', 8, 'categoria8', '8', '1');
+INSERT INTO Mobiliario(nombre, cantidad, categoria, idSucursal, estatus) values ('nombre9', 9, 'categoria9', '9', '1');
+INSERT INTO Mobiliario(nombre, cantidad, categoria, idSucursal, estatus) values ('nombre10', 10, 'categoria10', '10', '1');
+
+INSERT INTO Nomina(fecha, persona, cantidad, idContador, estatus) values ('2022/12/4', 'persona1', 'cantidad1', '1', '1');
+INSERT INTO Nomina(fecha, persona, cantidad, idContador, estatus) values ('2022/12/4', 'persona2', 'cantidad2', '2', '1');
+INSERT INTO Nomina(fecha, persona, cantidad, idContador, estatus) values ('2022/12/4', 'persona3', 'cantidad3', '3', '1');
+INSERT INTO Nomina(fecha, persona, cantidad, idContador, estatus) values ('2022/12/4', 'persona4', 'cantidad4', '4', '1');
+INSERT INTO Nomina(fecha, persona, cantidad, idContador, estatus) values ('2022/12/4', 'persona5', 'cantidad5', '5', '1');
+INSERT INTO Nomina(fecha, persona, cantidad, idContador, estatus) values ('2022/12/4', 'persona6', 'cantidad6', '6', '1');
+INSERT INTO Nomina(fecha, persona, cantidad, idContador, estatus) values ('2022/12/4', 'persona7', 'cantidad7', '7', '1');
+INSERT INTO Nomina(fecha, persona, cantidad, idContador, estatus) values ('2022/12/4', 'persona8', 'cantidad8', '8', '1');
+INSERT INTO Nomina(fecha, persona, cantidad, idContador, estatus) values ('2022/12/4', 'persona9', 'cantidad9', '9', '1');
+INSERT INTO Nomina(fecha, persona, cantidad, idContador, estatus) values ('2022/12/4', 'persona10', 'cantidad10', '10', '1');
+
+
+INSERT INTO PagoServicio(cantidad, servicio, fecha, idSucursal, estatus) values (1, 'servicio1', '2022/12/4', '1', '1');
+INSERT INTO PagoServicio(cantidad, servicio, fecha, idSucursal, estatus) values (2, 'servicio2', '2022/12/4', '2', '1');
+INSERT INTO PagoServicio(cantidad, servicio, fecha, idSucursal, estatus) values (3, 'servicio3', '2022/12/4', '3', '1');
+INSERT INTO PagoServicio(cantidad, servicio, fecha, idSucursal, estatus) values (4, 'servicio4', '2022/12/4', '4', '1');
+INSERT INTO PagoServicio(cantidad, servicio, fecha, idSucursal, estatus) values (5, 'servicio5', '2022/12/4', '5', '1');
+INSERT INTO PagoServicio(cantidad, servicio, fecha, idSucursal, estatus) values (6, 'servicio6', '2022/12/4', '6', '1');
+INSERT INTO PagoServicio(cantidad, servicio, fecha, idSucursal, estatus) values (7, 'servicio7', '2022/12/4', '7', '1');
+INSERT INTO PagoServicio(cantidad, servicio, fecha, idSucursal, estatus) values (8, 'servicio8', '2022/12/4', '8', '1');
+INSERT INTO PagoServicio(cantidad, servicio, fecha, idSucursal, estatus) values (9, 'servicio9', '2022/12/4', '9', '1');
+INSERT INTO PagoServicio(cantidad, servicio, fecha, idSucursal, estatus) values (10, 'servicio10', '2022/12/4', '10', '1');
+
+INSERT INTO Paquete(numero, peso, remitente, destinatario, idEnvio, idPedidoLinea, estatus) values (1, 'peso1', 'remitente1', 'destinatario1', '1', '1', '1');
+INSERT INTO Paquete(numero, peso, remitente, destinatario, idEnvio, idPedidoLinea, estatus) values (2, 'peso2', 'remitente2', 'destinatario2', '2', '2', '1');
+INSERT INTO Paquete(numero, peso, remitente, destinatario, idEnvio, idPedidoLinea, estatus) values (3, 'peso3', 'remitente3', 'destinatario3', '3', '3', '1');
+INSERT INTO Paquete(numero, peso, remitente, destinatario, idEnvio, idPedidoLinea, estatus) values (4, 'peso4', 'remitente4', 'destinatario4', '4', '4', '1');
+INSERT INTO Paquete(numero, peso, remitente, destinatario, idEnvio, idPedidoLinea, estatus) values (5, 'peso5', 'remitente5', 'destinatario5', '5', '5', '1');
+INSERT INTO Paquete(numero, peso, remitente, destinatario, idEnvio, idPedidoLinea, estatus) values (6, 'peso6', 'remitente6', 'destinatario6', '6', '6', '1');
+INSERT INTO Paquete(numero, peso, remitente, destinatario, idEnvio, idPedidoLinea, estatus) values (7, 'peso7', 'remitente7', 'destinatario7', '7', '7', '1');
+INSERT INTO Paquete(numero, peso, remitente, destinatario, idEnvio, idPedidoLinea, estatus) values (8, 'peso8', 'remitente8', 'destinatario8', '8', '8', '1');
+INSERT INTO Paquete(numero, peso, remitente, destinatario, idEnvio, idPedidoLinea, estatus) values (9, 'peso9', 'remitente9', 'destinatario9', '9', '9', '1');
+INSERT INTO Paquete(numero, peso, remitente, destinatario, idEnvio, idPedidoLinea, estatus) values (10, 'peso10', 'remitente10', 'destinatario10', '10', '10', '1');
+
+INSERT INTO Pasillo(cantidad, numero, tipo, idSucursal, estatus) values (1, 1, 'tipo1', '1', '1');
+INSERT INTO Pasillo(cantidad, numero, tipo, idSucursal, estatus) values (2, 2, 'tipo2', '2', '1');
+INSERT INTO Pasillo(cantidad, numero, tipo, idSucursal, estatus) values (3, 3, 'tipo3', '3', '1');
+INSERT INTO Pasillo(cantidad, numero, tipo, idSucursal, estatus) values (4, 4, 'tipo4', '4', '1');
+INSERT INTO Pasillo(cantidad, numero, tipo, idSucursal, estatus) values (5, 5, 'tipo5', '5', '1');
+INSERT INTO Pasillo(cantidad, numero, tipo, idSucursal, estatus) values (6, 6, 'tipo6', '6', '1');
+INSERT INTO Pasillo(cantidad, numero, tipo, idSucursal, estatus) values (7, 7, 'tipo7', '7', '1');
+INSERT INTO Pasillo(cantidad, numero, tipo, idSucursal, estatus) values (8, 8, 'tipo8', '8', '1');
+INSERT INTO Pasillo(cantidad, numero, tipo, idSucursal, estatus) values (9, 9, 'tipo9', '9', '1');
+INSERT INTO Pasillo(cantidad, numero, tipo, idSucursal, estatus) values (10, 10, 'tipo10', '10', '1');;
+
+
+INSERT INTO Puesto(tipopuesto, idEmpleado, estatus) values ('tipopuesto1', '1', '1');
+INSERT INTO Puesto(tipopuesto, idEmpleado, estatus) values ('tipopuesto2', '2', '1');
+INSERT INTO Puesto(tipopuesto, idEmpleado, estatus) values ('tipopuesto3', '3', '1');
+INSERT INTO Puesto(tipopuesto, idEmpleado, estatus) values ('tipopuesto4', '4', '1');
+INSERT INTO Puesto(tipopuesto, idEmpleado, estatus) values ('tipopuesto5', '5', '1');
+INSERT INTO Puesto(tipopuesto, idEmpleado, estatus) values ('tipopuesto6', '6', '1');
+INSERT INTO Puesto(tipopuesto, idEmpleado, estatus) values ('tipopuesto7', '7', '1');
+INSERT INTO Puesto(tipopuesto, idEmpleado, estatus) values ('tipopuesto8', '8', '1');
+INSERT INTO Puesto(tipopuesto, idEmpleado, estatus) values ('tipopuesto9', '9', '1');
+INSERT INTO Puesto(tipopuesto, idEmpleado, estatus) values ('tipopuesto10', '10', '1');
+
+
+INSERT INTO Vigilancia(caseta, total, idSucursal, estatus) values (1, 1, '1', '1');
+INSERT INTO Vigilancia(caseta, total, idSucursal, estatus) values (2, 2, '2', '1');
+INSERT INTO Vigilancia(caseta, total, idSucursal, estatus) values (3, 3, '3', '1');
+INSERT INTO Vigilancia(caseta, total, idSucursal, estatus) values (4, 4, '4', '1');
+INSERT INTO Vigilancia(caseta, total, idSucursal, estatus) values (5, 5, '5', '1');
+INSERT INTO Vigilancia(caseta, total, idSucursal, estatus) values (6, 6, '6', '1');
+INSERT INTO Vigilancia(caseta, total, idSucursal, estatus) values (7, 7, '7', '1');
+INSERT INTO Vigilancia(caseta, total, idSucursal, estatus) values (8, 8, '8', '1');
+INSERT INTO Vigilancia(caseta, total, idSucursal, estatus) values (9, 9, '9', '1');
+INSERT INTO Vigilancia(caseta, total, idSucursal, estatus) values (10, 10, '10', '1');
+
+
+INSERT INTO BodegaInventario(idBodega, idInventario, fechainventario, estatus) values ('1', '1', '2022/12/4', '1');
+INSERT INTO BodegaInventario(idBodega, idInventario, fechainventario, estatus) values ('2', '2', '2022/12/4', '1');
+INSERT INTO BodegaInventario(idBodega, idInventario, fechainventario, estatus) values ('3', '3', '2022/12/4', '1');
+INSERT INTO BodegaInventario(idBodega, idInventario, fechainventario, estatus) values ('4', '4', '2022/12/4', '1');
+INSERT INTO BodegaInventario(idBodega, idInventario, fechainventario, estatus) values ('5', '5', '2022/12/4', '1');
+INSERT INTO BodegaInventario(idBodega, idInventario, fechainventario, estatus) values ('6', '6', '2022/12/4', '1');
+INSERT INTO BodegaInventario(idBodega, idInventario, fechainventario, estatus) values ('7', '7', '2022/12/4', '1');
+INSERT INTO BodegaInventario(idBodega, idInventario, fechainventario, estatus) values ('8', '8', '2022/12/4', '1');
+INSERT INTO BodegaInventario(idBodega, idInventario, fechainventario, estatus) values ('9', '9', '2022/12/4', '1');
+INSERT INTO BodegaInventario(idBodega, idInventario, fechainventario, estatus) values ('10', '10', '2022/12/4', '1');
+
+
+INSERT INTO ClienteCompra(idCliente, idCompra, fechacompra, estatus) values ('1', '1', '2022/12/4', '1');
+INSERT INTO ClienteCompra(idCliente, idCompra, fechacompra, estatus) values ('2', '2', '2022/12/4', '1');
+INSERT INTO ClienteCompra(idCliente, idCompra, fechacompra, estatus) values ('3', '3', '2022/12/4', '1');
+INSERT INTO ClienteCompra(idCliente, idCompra, fechacompra, estatus) values ('4', '4', '2022/12/4', '1');
+INSERT INTO ClienteCompra(idCliente, idCompra, fechacompra, estatus) values ('5', '5', '2022/12/4', '1');
+INSERT INTO ClienteCompra(idCliente, idCompra, fechacompra, estatus) values ('6', '6', '2022/12/4', '1');
+INSERT INTO ClienteCompra(idCliente, idCompra, fechacompra, estatus) values ('7', '7', '2022/12/4', '1');
+INSERT INTO ClienteCompra(idCliente, idCompra, fechacompra, estatus) values ('8', '8', '2022/12/4', '1');
+INSERT INTO ClienteCompra(idCliente, idCompra, fechacompra, estatus) values ('9', '9', '2022/12/4', '1');
+INSERT INTO ClienteCompra(idCliente, idCompra, fechacompra, estatus) values ('10', '10', '2022/12/4', '1');
+
+
+INSERT INTO ClienteCotizacion(idCliente, idCotizacion, estatus) values ('1', '1', '1');
+INSERT INTO ClienteCotizacion(idCliente, idCotizacion, estatus) values ('2', '2', '1');
+INSERT INTO ClienteCotizacion(idCliente, idCotizacion, estatus) values ('3', '3', '1');
+INSERT INTO ClienteCotizacion(idCliente, idCotizacion, estatus) values ('4', '4', '1');
+INSERT INTO ClienteCotizacion(idCliente, idCotizacion, estatus) values ('5', '5', '1');
+INSERT INTO ClienteCotizacion(idCliente, idCotizacion, estatus) values ('6', '6', '1');
+INSERT INTO ClienteCotizacion(idCliente, idCotizacion, estatus) values ('7', '7', '1');
+INSERT INTO ClienteCotizacion(idCliente, idCotizacion, estatus) values ('8', '8', '1');
+INSERT INTO ClienteCotizacion(idCliente, idCotizacion, estatus) values ('9', '9', '1');
+INSERT INTO ClienteCotizacion(idCliente, idCotizacion, estatus) values ('10', '10', '1');
+
+
+INSERT INTO ClienteCredito(idCliente, idCredito, fechacredito, estatus) values ('1', '1', '2022/12/4', '1');
+INSERT INTO ClienteCredito(idCliente, idCredito, fechacredito, estatus) values ('2', '2', '2022/12/4', '1');
+INSERT INTO ClienteCredito(idCliente, idCredito, fechacredito, estatus) values ('3', '3', '2022/12/4', '1');
+INSERT INTO ClienteCredito(idCliente, idCredito, fechacredito, estatus) values ('4', '4', '2022/12/4', '1');
+INSERT INTO ClienteCredito(idCliente, idCredito, fechacredito, estatus) values ('5', '5', '2022/12/4', '1');
+INSERT INTO ClienteCredito(idCliente, idCredito, fechacredito, estatus) values ('6', '6', '2022/12/4', '1');
+INSERT INTO ClienteCredito(idCliente, idCredito, fechacredito, estatus) values ('7', '7', '2022/12/4', '1');
+INSERT INTO ClienteCredito(idCliente, idCredito, fechacredito, estatus) values ('8', '8', '2022/12/4', '1');
+INSERT INTO ClienteCredito(idCliente, idCredito, fechacredito, estatus) values ('9', '9', '2022/12/4', '1');
+INSERT INTO ClienteCredito(idCliente, idCredito, fechacredito, estatus) values ('10', '10', '2022/12/4', '1');
+
+
+INSERT INTO ClienteQueja(idCliente, idQueja, fechaqueja, estatus) values ('1', '1', '2022/12/4', '1');
+INSERT INTO ClienteQueja(idCliente, idQueja, fechaqueja, estatus) values ('2', '2', '2022/12/4', '1');
+INSERT INTO ClienteQueja(idCliente, idQueja, fechaqueja, estatus) values ('3', '3', '2022/12/4', '1');
+INSERT INTO ClienteQueja(idCliente, idQueja, fechaqueja, estatus) values ('4', '4', '2022/12/4', '1');
+INSERT INTO ClienteQueja(idCliente, idQueja, fechaqueja, estatus) values ('5', '5', '2022/12/4', '1');
+INSERT INTO ClienteQueja(idCliente, idQueja, fechaqueja, estatus) values ('6', '6', '2022/12/4', '1');
+INSERT INTO ClienteQueja(idCliente, idQueja, fechaqueja, estatus) values ('7', '7', '2022/12/4', '1');
+INSERT INTO ClienteQueja(idCliente, idQueja, fechaqueja, estatus) values ('8', '8', '2022/12/4', '1');
+INSERT INTO ClienteQueja(idCliente, idQueja, fechaqueja, estatus) values ('9', '9', '2022/12/4', '1');
+INSERT INTO ClienteQueja(idCliente, idQueja, fechaqueja, estatus) values ('10', '10', '2022/12/4', '1');
+
+
+INSERT INTO EmpleadoCapacitacion(idEmpleado, idCapacitacion, estatus) values ('1', '1', '1');
+INSERT INTO EmpleadoCapacitacion(idEmpleado, idCapacitacion, estatus) values ('2', '2', '1');
+INSERT INTO EmpleadoCapacitacion(idEmpleado, idCapacitacion, estatus) values ('3', '3', '1');
+INSERT INTO EmpleadoCapacitacion(idEmpleado, idCapacitacion, estatus) values ('4', '4', '1');
+INSERT INTO EmpleadoCapacitacion(idEmpleado, idCapacitacion, estatus) values ('5', '5', '1');
+INSERT INTO EmpleadoCapacitacion(idEmpleado, idCapacitacion, estatus) values ('6', '6', '1');
+INSERT INTO EmpleadoCapacitacion(idEmpleado, idCapacitacion, estatus) values ('7', '7', '1');
+INSERT INTO EmpleadoCapacitacion(idEmpleado, idCapacitacion, estatus) values ('8', '8', '1');
+INSERT INTO EmpleadoCapacitacion(idEmpleado, idCapacitacion, estatus) values ('9', '9', '1');
+INSERT INTO EmpleadoCapacitacion(idEmpleado, idCapacitacion, estatus) values ('10', '10', '1');
+
+INSERT INTO EmpleadoContrato(idEmpleado, idContrato, fechacontrato, estatus) values ('1', '1', '2022/12/4', '1');
+INSERT INTO EmpleadoContrato(idEmpleado, idContrato, fechacontrato, estatus) values ('2', '2', '2022/12/4', '1');
+INSERT INTO EmpleadoContrato(idEmpleado, idContrato, fechacontrato, estatus) values ('3', '3', '2022/12/4', '1');
+INSERT INTO EmpleadoContrato(idEmpleado, idContrato, fechacontrato, estatus) values ('4', '4', '2022/12/4', '1');
+INSERT INTO EmpleadoContrato(idEmpleado, idContrato, fechacontrato, estatus) values ('5', '5', '2022/12/4', '1');
+INSERT INTO EmpleadoContrato(idEmpleado, idContrato, fechacontrato, estatus) values ('6', '6', '2022/12/4', '1');
+INSERT INTO EmpleadoContrato(idEmpleado, idContrato, fechacontrato, estatus) values ('7', '7', '2022/12/4', '1');
+INSERT INTO EmpleadoContrato(idEmpleado, idContrato, fechacontrato, estatus) values ('8', '8', '2022/12/4', '1');
+INSERT INTO EmpleadoContrato(idEmpleado, idContrato, fechacontrato, estatus) values ('9', '9', '2022/12/4', '1');
+INSERT INTO EmpleadoContrato(idEmpleado, idContrato, fechacontrato, estatus) values ('10', '10', '2022/12/4', '1');
+
+INSERT INTO EmpleadoPrestacion(idEmpleado, idPrestacion, estatus) values ('1', '1', '1');
+INSERT INTO EmpleadoPrestacion(idEmpleado, idPrestacion, estatus) values ('2', '2', '1');
+INSERT INTO EmpleadoPrestacion(idEmpleado, idPrestacion, estatus) values ('3', '3', '1');
+INSERT INTO EmpleadoPrestacion(idEmpleado, idPrestacion, estatus) values ('4', '4', '1');
+INSERT INTO EmpleadoPrestacion(idEmpleado, idPrestacion, estatus) values ('5', '5', '1');
+INSERT INTO EmpleadoPrestacion(idEmpleado, idPrestacion, estatus) values ('6', '6', '1');
+INSERT INTO EmpleadoPrestacion(idEmpleado, idPrestacion, estatus) values ('7', '7', '1');
+INSERT INTO EmpleadoPrestacion(idEmpleado, idPrestacion, estatus) values ('8', '8', '1');
+INSERT INTO EmpleadoPrestacion(idEmpleado, idPrestacion, estatus) values ('9', '9', '1');
+INSERT INTO EmpleadoPrestacion(idEmpleado, idPrestacion, estatus) values ('10', '10', '1');
+
+
+INSERT INTO ProductoEnvio(idProducto, idEnvio, fechaenvio, estatus) values ('1', '1', '2022/12/4', '1');
+INSERT INTO ProductoEnvio(idProducto, idEnvio, fechaenvio, estatus) values ('2', '2', '2022/12/4', '1');
+INSERT INTO ProductoEnvio(idProducto, idEnvio, fechaenvio,estatus) values ('3', '3', '2022/12/4', '1');
+INSERT INTO ProductoEnvio(idProducto, idEnvio, fechaenvio, estatus) values ('4', '4', '2022/12/4', '1');
+INSERT INTO ProductoEnvio(idProducto, idEnvio, fechaenvio, estatus) values ('5', '5', '2022/12/4', '1');
+INSERT INTO ProductoEnvio(idProducto, idEnvio, fechaenvio, estatus) values ('6', '6', '2022/12/4', '1');
+INSERT INTO ProductoEnvio(idProducto, idEnvio, fechaenvio, estatus) values ('7', '7', '2022/12/4', '1');
+INSERT INTO ProductoEnvio(idProducto, idEnvio, fechaenvio, estatus) values ('8', '8', '2022/12/4', '1');
+INSERT INTO ProductoEnvio(idProducto, idEnvio, fechaenvio, estatus) values ('9', '9', '2022/12/4', '1');
+INSERT INTO ProductoEnvio(idProducto, idEnvio, fechaenvio, estatus) values ('10', '10', '2022/12/4', '1');
+
+
+INSERT INTO ProductoOferta(idProducto, idOferta, fechaoferta, estatus) values ('1', '1', '2022/12/4', '1');
+INSERT INTO ProductoOferta(idProducto, idOferta, fechaoferta, estatus) values ('2', '2', '2022/12/4', '1');
+INSERT INTO ProductoOferta(idProducto, idOferta, fechaoferta, estatus) values ('3', '3', '2022/12/4', '1');
+INSERT INTO ProductoOferta(idProducto, idOferta, fechaoferta, estatus) values ('4', '4', '2022/12/4', '1');
+INSERT INTO ProductoOferta(idProducto, idOferta, fechaoferta, estatus) values ('5', '5', '2022/12/4', '1');
+INSERT INTO ProductoOferta(idProducto, idOferta, fechaoferta, estatus) values ('6', '6', '2022/12/4', '1');
+INSERT INTO ProductoOferta(idProducto, idOferta, fechaoferta, estatus) values ('7', '7', '2022/12/4', '1');
+INSERT INTO ProductoOferta(idProducto, idOferta, fechaoferta, estatus) values ('8', '8', '2022/12/4', '1');
+INSERT INTO ProductoOferta(idProducto, idOferta, fechaoferta, estatus) values ('9', '9', '2022/12/4', '1');
+INSERT INTO ProductoOferta(idProducto, idOferta, fechaoferta, estatus) values ('10', '10', '2022/12/4', '1');
+
+
+INSERT INTO ProductoPedidoLinea(idProducto, idPedidoLinea, fechapedidolinea, estatus) values ('1', '1', '2022/12/4', '1');
+INSERT INTO ProductoPedidoLinea(idProducto, idPedidoLinea, fechapedidolinea, estatus) values ('2', '2', '2022/12/4', '1');
+INSERT INTO ProductoPedidoLinea(idProducto, idPedidoLinea, fechapedidolinea, estatus) values ('3', '3', '2022/12/4', '1');
+INSERT INTO ProductoPedidoLinea(idProducto, idPedidoLinea, fechapedidolinea, estatus) values ('4', '4', '2022/12/4', '1');
+INSERT INTO ProductoPedidoLinea(idProducto, idPedidoLinea, fechapedidolinea, estatus) values ('5', '5', '2022/12/4', '1');
+INSERT INTO ProductoPedidoLinea(idProducto, idPedidoLinea, fechapedidolinea, estatus) values ('6', '6', '2022/12/4', '1');
+INSERT INTO ProductoPedidoLinea(idProducto, idPedidoLinea, fechapedidolinea, estatus) values ('7', '7', '2022/12/4', '1');
+INSERT INTO ProductoPedidoLinea(idProducto, idPedidoLinea, fechapedidolinea, estatus) values ('8', '8', '2022/12/4', '1');
+INSERT INTO ProductoPedidoLinea(idProducto, idPedidoLinea, fechapedidolinea, estatus) values ('9', '9', '2022/12/4', '1');
+INSERT INTO ProductoPedidoLinea(idProducto, idPedidoLinea, fechapedidolinea, estatus) values ('10', '10', '2022/12/4', '1');
+
+
+INSERT INTO ProductoVenta(idProducto, idVenta, fechaventa, estatus) values ('1', '1', '2022/12/4', '1');
+INSERT INTO ProductoVenta(idProducto, idVenta, fechaventa, estatus) values ('2', '2', '2022/12/4', '1');
+INSERT INTO ProductoVenta(idProducto, idVenta, fechaventa, estatus) values ('3', '3', '2022/12/4', '1');
+INSERT INTO ProductoVenta(idProducto, idVenta, fechaventa, estatus) values ('4', '4', '2022/12/4', '1');
+INSERT INTO ProductoVenta(idProducto, idVenta, fechaventa, estatus) values ('5', '5', '2022/12/4', '1');
+INSERT INTO ProductoVenta(idProducto, idVenta, fechaventa, estatus) values ('6', '6', '2022/12/4', '1');
+INSERT INTO ProductoVenta(idProducto, idVenta, fechaventa, estatus) values ('7', '7', '2022/12/4', '1');
+INSERT INTO ProductoVenta(idProducto, idVenta, fechaventa, estatus) values ('8', '8', '2022/12/4', '1');
+INSERT INTO ProductoVenta(idProducto, idVenta, fechaventa, estatus) values ('9', '9', '2022/12/4', '1');
+INSERT INTO ProductoVenta(idProducto, idVenta, fechaventa, estatus) values ('10', '10', '2022/12/4', '1');
+
+
+INSERT INTO SucursalEmpleado(idSucursal, idEmpleado, estatus) values ('1', '1', '1');
+INSERT INTO SucursalEmpleado(idSucursal, idEmpleado, estatus) values ('2', '2', '1');
+INSERT INTO SucursalEmpleado(idSucursal, idEmpleado, estatus) values ('3', '3', '1');
+INSERT INTO SucursalEmpleado(idSucursal, idEmpleado, estatus) values ('4', '4', '1');
+INSERT INTO SucursalEmpleado(idSucursal, idEmpleado, estatus) values ('5', '5', '1');
+INSERT INTO SucursalEmpleado(idSucursal, idEmpleado, estatus) values ('6', '6', '1');
+INSERT INTO SucursalEmpleado(idSucursal, idEmpleado, estatus) values ('7', '7', '1');
+INSERT INTO SucursalEmpleado(idSucursal, idEmpleado, estatus) values ('8', '8', '1');
+INSERT INTO SucursalEmpleado(idSucursal, idEmpleado, estatus) values ('9', '9', '1');
+INSERT INTO SucursalEmpleado(idSucursal, idEmpleado, estatus) values ('10', '10', '1');
+
+
+INSERT INTO TransportePaquete(idTransporte, idPaquete, estatus) values ('1', '1', '1');
+INSERT INTO TransportePaquete(idTransporte, idPaquete, estatus) values ('2', '2', '1');
+INSERT INTO TransportePaquete(idTransporte, idPaquete, estatus) values ('3', '3', '1');
+INSERT INTO TransportePaquete(idTransporte, idPaquete, estatus) values ('4', '4', '1');
+INSERT INTO TransportePaquete(idTransporte, idPaquete, estatus) values ('5', '5', '1');
+INSERT INTO TransportePaquete(idTransporte, idPaquete, estatus) values ('6', '6', '1');
+INSERT INTO TransportePaquete(idTransporte, idPaquete, estatus) values ('7', '7', '1');
+INSERT INTO TransportePaquete(idTransporte, idPaquete, estatus) values ('8', '8', '1');
+INSERT INTO TransportePaquete(idTransporte, idPaquete, estatus) values ('9', '9', '1');
+INSERT INTO TransportePaquete(idTransporte, idPaquete, estatus) values ('10', '10', '1');
+
+SELECT *FROM BODEGA;
+UPDATE Bodega SET numero = '2' WHERE idBodega = 1;
+SELECT *FROM Bodega;
+
+SELECT *FROM CAJA;
+UPDATE CAJA SET computadora = 'computadora2' WHERE idCaja = 1;
+SELECT *FROM Caja;
+DELETE FROM Caja WHERE idCaja = 1;
+SELECT *FROM Caja;
+
+SELECT *FROM CAPACITACION;
+UPDATE Capacitacion SET nombre = 'nombre2' WHERE idCapacitacion = 1;
+SELECT *FROM Capacitacion;
+
+SELECT *FROM CLIENTE;
+UPDATE Cliente SET apellidomaterno = 'apellidomaterno1' WHERE idCliente = 1;
+SELECT *FROM Cliente;
+
+SELECT *FROM COMPRA;
+UPDATE Compra SET cantidad = '2' WHERE idCompra = 1;
+SELECT *FROM Compra;
+
+SELECT *FROM COMPROBANTE;
+UPDATE Comprobante SET cantidad = '2' WHERE idComprobante = 1;
+SELECT *FROM Comprobante;
+DELETE FROM Comprobante WHERE idComprobante = 1;
+SELECT *FROM Comprobante;
+
+SELECT *FROM CONTADOR;
+UPDATE Contador SET apellidomaterno = 'apellidomaterno2' WHERE idContador = 1;
+SELECT *FROM Contador;
+
+SELECT *FROM CONTRATO;
+UPDATE Contrato SET nombre = 'nombre2' WHERE idContrato = 1;;
+SELECT *FROM Contrato;
+
+SELECT *FROM CONVENIO;
+UPDATE Convenio SET cantidad = '2' WHERE idConvenio = 1;;
+SELECT *FROM Convenio;
+DELETE FROM Convenio WHERE idConvenio = 1;;
+SELECT *FROM Convenio;
+
+SELECT *FROM COTIZACION;
+UPDATE Cotizacion SET cantidad = '2' WHERE idCotizacion = 1;;
+SELECT *FROM Cotizacion;
+
+SELECT *FROM CREDITO;
+UPDATE Credito SET creditodebe = '2' WHERE idCredito = 1;
+SELECT *FROM Credito;
+
+SELECT *FROM DELIVERY;
+UPDATE Delivery SET producto = 'producto2' WHERE idDelivery = 1;
+SELECT *FROM Delivery;
+DELETE FROM Delivery WHERE idDelivery = 1;
+SELECT *FROM Delivery;
+
+SELECT *FROM DEPARTAMENTO;
+UPDATE Departamento SET nombre = 'nombre2' WHERE idDepartamento = 1;
+SELECT *FROM Departamento;
+DELETE FROM Departamento WHERE idDepartamento = 1;
+SELECT *FROM Departamento;
+
+SELECT *FROM DEVOLUCION;
+UPDATE Devolucion SET cantidad = '2' WHERE idDevolucion = 1;
+SELECT *FROM Devolucion;
+
+SELECT *FROM DEVOLUCIONPROVEEDOR;
+UPDATE DevolucionProveedor SET cantidad = '2' WHERE idDevolucionProveedor = 1;
+SELECT *FROM DevolucionProveedor;
+DELETE FROM DevolucionProveedor WHERE idDevolucionProveedor = 1;
+SELECT *FROM DevolucionProveedor;
+
+SELECT *FROM EMPLEADO;
+UPDATE Empleado SET apellidomaterno = 'apellidomaterno2' WHERE idEmpleado = 1;
+SELECT *FROM Empleado;
+
+SELECT *FROM EMPRESA;
+UPDATE Empresa SET nombre = 'nombre2' WHERE idEmpresa = 1;
+SELECT *FROM Empresa;
+DELETE FROM Empresa WHERE idEmpresa = 1;
+SELECT *FROM Empresa;
+
+SELECT *FROM ENVIO;
+UPDATE Envio SET apellidomaterno = 'apellidomaterno2' WHERE idEnvio = 1;
+SELECT *FROM Envio;
+
+SELECT *FROM EQUIPOINFORMATICO;
+UPDATE EquipoInformatico SET cantidad = '2' WHERE idEquipoInformatico = 1;
+SELECT *FROM EquipoInformatico;
+DELETE FROM EquipoInformatico WHERE idEquipoinformatico = 1;
+SELECT *FROM EquipoInformatico;
+
+SELECT *FROM ESTACIONAMIENTO;
+UPDATE Estacionamiento SET lugar = '2' WHERE idEstacionamiento = 1;
+SELECT *FROM Estacionamiento;
+DELETE FROM Estacionamiento WHERE idEstacionamiento = 1;
+SELECT *FROM Estacionamiento;
+
+SELECT *FROM FACTURACLIENTE;
+UPDATE FacturaCliente SET cantidad = '2' WHERE idFacturaCliente = 1;
+SELECT *FROM FacturaCliente;
+
+SELECT *FROM FACTURACLIENTE;
+UPDATE FacturaProveedor SET cantidad = '2' WHERE idFacturaProveedor = 1;
+SELECT *FROM FacturaProveedor;
+DELETE FROM FacturaProveedor WHERE idFacturaProveedor = 1;
+SELECT *FROM FacturaProveedor;
+
+SELECT *FROM HORARIOTRABAJADOR;
+UPDATE HorarioTrabajador SET entrada = '2/12/2022' WHERE idHorarioTrabajador = 1;
+SELECT *FROM HorarioTrabajador;
+DELETE FROM HorarioTrabajador WHERE idHorarioTrabajador = 1;
+SELECT *FROM HorarioTrabajador;
+
+
+SELECT *FROM INVENTARIO;
+UPDATE Inventario SET nombre = 'nombre2' WHERE idInventario = 1;
+SELECT *FROM Inventario ;
+
+SELECT *FROM MANTENIMIENTO;
+UPDATE Mantenimiento SET fecha = '2/12/2022' WHERE idMantenimiento = 1;
+SELECT *FROM Mantenimiento;
+DELETE FROM Mantenimiento WHERE idMantenimiento = 1;
+SELECT *FROM Mantenimiento;
+
+SELECT *FROM MARCA;
+UPDATE Marca SET ciudad = 'ciudad2' WHERE idMarca = 1;
+SELECT *FROM Marca;
+
+SELECT *FROM MARKETING;
+UPDATE Marketing SET tipo = 'tipo2' WHERE idMarketing = 1;
+SELECT *FROM Marketing ;
+DELETE FROM Marketing WHERE idMarketing = 1;
+SELECT *FROM Marketing;
+
+SELECT *FROM MATERIAPRIMA;
+UPDATE MateriaPrima SET nombre = 'nombre2' WHERE idMateriaPrima = 1;
+SELECT *FROM MateriaPrima;
+DELETE FROM MateriaPrima WHERE idMateriaPrima = 1;
+SELECT *FROM MateriaPrima;
+
+SELECT *FROM MEMBRESIA;
+UPDATE Membresia SET nombre = 'nombre2' WHERE idMembresia = 1;
+SELECT *FROM Membresia;
+
+SELECT *FROM METODOPAGO;
+UPDATE MetodoPago SET tipo = 'tipo2' WHERE idMetodopago = 1;
+SELECT *FROM MetodoPago;
+DELETE FROM MetodoPago WHERE idMetodopago = 1;
+SELECT *FROM MetodoPago;
+
+SELECT *FROM MOBILIARIO;
+UPDATE Mobiliario SET nombre = 'nombre2' WHERE idMobiliario = 1;
+SELECT *FROM Mobiliario;
+DELETE FROM Mobiliario WHERE idMobiliario = 1;
+SELECT *FROM Mobiliario;
+
+SELECT *FROM NOMINA;
+UPDATE Nomina SET persona = 'persona2' WHERE idNomina = 1;
+SELECT *FROM Nomina;
+DELETE FROM Nomina WHERE idNomina = 1;
+SELECT *FROM Nomina;
+
+SELECT *FROM OFERTA;
+UPDATE Oferta SET producto = 'producto2' WHERE idOferta = 1;
+SELECT *FROM Oferta;
+
+SELECT *FROM PAGOSERVICIO;
+UPDATE PagoServicio SET servicio = 'servicio2' WHERE idPagoservicio = 1;
+SELECT *FROM PagoServicio;
+DELETE FROM PagoServicio WHERE idPagoServicio = 1;
+SELECT *FROM PagoServicio;
+
+SELECT *FROM Paquete;
+UPDATE Paquete SET remitente = 'remitente2' WHERE idPaquete = 1;
+SELECT *FROM Paquete;
+
+SELECT *FROM PASILLO;
+UPDATE Pasillo SET tipo = 'tipo2' WHERE idPasillo = 1;
+SELECT *FROM Pasillo;
+DELETE FROM Pasillo WHERE idPasillo = 1;
+SELECT *FROM Pasillo;
+
+SELECT *FROM PEDIDOLINEA;
+UPDATE PedidoLinea SET fecha = '2/12/2022' WHERE idPedidoLinea = 1;
+SELECT *FROM PedidoLinea;
+
+SELECT *FROM PRESTACION;
+UPDATE Prestacion SET tipo = 'tipo2' WHERE idPrestacion = 1;
+SELECT *FROM Prestacion;
+DELETE FROM Prestacion WHERE idPrestacion = 1;
+SELECT *FROM Prestacion;
+
+SELECT *FROM PRODUCCION;
+UPDATE Produccion SET fecha = '2/12/2022' WHERE idProduccion = 1;
+SELECT *FROM Produccion ;
+
+SELECT *FROM PRODUCTO;
+UPDATE Producto SET nombre = 'nombre2' WHERE idProducto = 1;
+SELECT *FROM Producto;
+
+SELECT *FROM PROVEEDOR;
+UPDATE Proveedor SET apellidomaterno = 'apellidomaterno2' WHERE idProveedor = 1;
+SELECT *FROM Proveedor;
+DELETE FROM Proveedor WHERE idProveedor = 1;
+SELECT *FROM Proveedor;
+
+SELECT *FROM PUESTO;
+UPDATE Puesto SET tipopuesto = 'tipopuesto2' WHERE idPuesto = 1;
+SELECT *FROM Puesto;
+DELETE FROM Puesto WHERE idPuesto = 1;
+SELECT *FROM Puesto;
+
+SELECT *FROM QUEJA;
+UPDATE Queja SET fecha = '2/12/2022' WHERE idQueja = 1;
+SELECT *FROM Queja;
+
+SELECT *FROM REPRESENTANTE;
+UPDATE Representante SET apellidomaterno = 'apellidomaterno2' WHERE idRepresentante = 1;
+SELECT *FROM Representante;
+DELETE FROM Representante WHERE idRepresentante = 1;
+SELECT *FROM Representante;
+
+SELECT *FROM RESTAURANTE;
+UPDATE Restaurante SET comida = 'comida2' WHERE idRestaurante = 1;
+SELECT *FROM Restaurante;
+DELETE FROM Restaurante WHERE idRestaurante = 1;
+SELECT *FROM Restaurante;
+
+
+SELECT *FROM SUCURSAL;
+UPDATE Sucursal SET nombre = 'nombre2' WHERE idSucursal = 1;
+SELECT *FROM Sucursal;
+
+SELECT *FROM TARJETAPUNTO;
+UPDATE TarjetaPunto SET beneficios = 'beneficios2' WHERE idTarjetapunto = 1;
+SELECT *FROM TarjetaPunto;
+
+SELECT *FROM Transporte;
+UPDATE Transporte SET marca = 'marca2' WHERE idTransporte = 1;
+SELECT *FROM Transporte;
+
+SELECT *FROM Venta;
+UPDATE Venta SET fecha = '2/12/2022' WHERE idVenta = 1;
+SELECT *FROM Venta;
+
+SELECT *FROM VIGILANCIA;
+UPDATE Vigilancia SET total = '2' WHERE idVigilancia = 1;
+SELECT *FROM Vigilancia;
+DELETE FROM Vigilancia WHERE idVigilancia = 1;
+SELECT *FROM Vigilancia;
